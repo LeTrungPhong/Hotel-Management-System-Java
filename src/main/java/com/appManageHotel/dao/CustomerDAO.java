@@ -17,7 +17,6 @@ public class CustomerDAO implements DAOInterface<Customer> {
 	
 	@Override
 	public int insert(Customer t) {
-		
 		try {
 			Connection con = ConnectDatabase.getConnection();
 			

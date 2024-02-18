@@ -11,6 +11,7 @@ com\appManageHotel\models\service\UseService.class
 com\appManageHotel\models\service\Service.class
 com\appManageHotel\dao\ServiceDAO.class
 com\appManageHotel\models\room\ConvenientRoom.class
+com\appManageHotel\dao\RoomDAO.class
 com\appManageHotel\models\people\Customer.class
 com\appManageHotel\models\people\People.class
 com\appManageHotel\models\time\Time.class

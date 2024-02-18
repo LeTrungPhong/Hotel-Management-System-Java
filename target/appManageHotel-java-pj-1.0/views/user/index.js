@@ -2,6 +2,8 @@
 let headerWidth = 200;
 let headerWidthBar = 50;
 
+const module = request.getAttribute("model");
+
 // body
 var bodyContainer = document.querySelector('.container');
 
@@ -149,45 +151,49 @@ var contentListRoomItem = document.getElementsByClassName('content__listroom-ite
 var contentListRoomItemForm = document.getElementsByClassName('content__listroom-item-form');
 var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
 
-document.addEventListener('DOMContentLoaded',() => {
+function funcResetAttributecontentListRoomItem(){
     for(let i = 0; i < contentListRoomItemForm.length; ++i){
         contentListRoomItemCheck[i].style.transform = "skewx(-20deg)";
-
+    
         setTimeout(() => {
             contentListRoomItemCheck[i].style.transform = "skewx(-30deg)";
         },250)
     }
+    
+    for(let i = 0; i < contentListRoomItemCheck.length; ++i){
+        contentListRoomItemCheck[i].style.height = '50px';
+    }
+    
+    for(let i = 0; i < contentListRoomItemCheck.length; ++i){
+        if(i%3 == 0){
+            contentListRoomItemCheck[i].classList.add('background-color-check-g');
+            contentListRoomItemCheck[i].classList.remove('background-color-check-r');
+        }
+        else
+        {
+            contentListRoomItemCheck[i].classList.remove('background-color-check-g');
+            contentListRoomItemCheck[i].classList.add('background-color-check-r');
+        }
+    }
+    
+    for(let i = 0; i < contentListRoomItemForm.length; ++i){
+        contentListRoomItemForm[i].addEventListener('mouseover',() => {
+            contentListRoomItemForm[i].style.boxShadow = "4px 0px 6px 1px gray";
+            contentListRoomItemCheck[i].style.transform = "skewx(-20deg)";
+        })
+    }
+    
+    for(let i = 0; i < contentListRoomItemForm.length; ++i){
+        contentListRoomItemForm[i].addEventListener('mouseleave',() => {
+            contentListRoomItemForm[i].style.boxShadow = "3px 0px 6px 0px gray";
+            contentListRoomItemCheck[i].style.transform = "skewx(-30deg)";
+        })
+    }
+}
+
+document.addEventListener('DOMContentLoaded',() => {
+    funcResetAttributecontentListRoomItem();
 })
-
-for(let i = 0; i < contentListRoomItemCheck.length; ++i){
-    contentListRoomItemCheck[i].style.height = '50px';
-}
-
-for(let i = 0; i < contentListRoomItemCheck.length; ++i){
-    if(i%3 == 0){
-        contentListRoomItemCheck[i].classList.add('background-color-check-g');
-        contentListRoomItemCheck[i].classList.remove('background-color-check-r');
-    }
-    else
-    {
-        contentListRoomItemCheck[i].classList.remove('background-color-check-g');
-        contentListRoomItemCheck[i].classList.add('background-color-check-r');
-    }
-}
-
-for(let i = 0; i < contentListRoomItemForm.length; ++i){
-    contentListRoomItemForm[i].addEventListener('mouseover',() => {
-        contentListRoomItemForm[i].style.boxShadow = "4px 0px 6px 1px gray";
-        contentListRoomItemCheck[i].style.transform = "skewx(-20deg)";
-    })
-}
-
-for(let i = 0; i < contentListRoomItemForm.length; ++i){
-    contentListRoomItemForm[i].addEventListener('mouseleave',() => {
-        contentListRoomItemForm[i].style.boxShadow = "3px 0px 6px 0px gray";
-        contentListRoomItemCheck[i].style.transform = "skewx(-30deg)";
-    })
-}
 
 // sign
 var sign = document.querySelector('.sign');
@@ -251,6 +257,7 @@ signTimes.addEventListener('click',() => {
         signMove.style.opacity = 0;
         setTimeout(() => {
             sign.style.display = 'none';
+            sign.style.transform = 'translate(-50%,-70%)';
         },250);
         backgroundSign.style.opacity = 0;
         setTimeout(() => {
@@ -277,7 +284,9 @@ for(let i = 0; i < headerDashboardAccountNavItem.length; ++i){
             setTimeout(() => {
                 sign.classList.add('background-color-sign');
                 sign.style.opacity = 1;
-            },250);
+                sign.style.transform = 'translate(-50%, -50%)';
+            },0);
+
             signAccountIn.style.display = 'flex';
             signAccountIn.style.opacity = 1;
             signAccount.style.transform ='translatex(0px)';
@@ -305,7 +314,8 @@ for(let i = 0; i < headerDashboardAccountNavItem.length; ++i){
             setTimeout(() => {
                 sign.classList.add('background-color-sign');
                 sign.style.opacity = 1;
-            },250);
+                sign.style.transform = 'translate(-50%, -50%)';
+            },0);
             signTimes.style.transform = 'translate(0px, -40px)';
             signAccountUp.style.display = 'flex';
             signAccountUp.style.opacity = 1;
@@ -323,3 +333,179 @@ for(let i = 0; i < headerDashboardAccountNavItem.length; ++i){
         });
     }
 }
+
+var contentTool = document.querySelector('.content__tool');
+var contentToolItem = document.getElementsByClassName('content__tool-item');
+var contentToolItemFirst = document.getElementsByClassName('content__tool-item-first');
+var contentToolItemSecond = document.getElementsByClassName('content__tool-item-second');
+var contentToolItemThird = document.getElementsByClassName('content__tool-item-third');
+
+let width = 100;
+let height = 20;
+let high = 30;
+let skew = 45;
+
+function funcToolItemHover(i)  {
+    contentToolItem[i].style.transform = 'translatey(20px)';
+}
+
+function funcToolItemDontHover(i)  {
+    contentToolItem[i].style.transform = 'translatey(0px)';
+}
+
+document.addEventListener('DOMContentLoaded',() => {
+    for(let i = 0; i < contentToolItem.length; ++i){
+        contentToolItemFirst[i].style.width = `${width}px`;
+        contentToolItemFirst[i].style.height = `${high}px`;
+        contentToolItemSecond[i].style.width = `${width}px`;
+        contentToolItemSecond[i].style.height = `${height}px`;
+        contentToolItemThird[i].style.width = `${high}px`;
+        contentToolItemThird[i].style.height = `${height}px`;
+
+        contentToolItemFirst[i].style.transform = `skewx(-${skew}deg)`;
+        contentToolItemFirst[i].style.top = `-${high}px`;
+        contentToolItemFirst[i].style.left = `${high/2}px`;
+
+        contentToolItemThird[i].style.transform = `skewy(-${skew}deg)`;
+        contentToolItemThird[i].style.top = `-${high/2}px`;
+        contentToolItemThird[i].style.left = `${width}px`;
+
+        contentToolItem[i].style.height = `calc(${height}px + ${high}px)`;
+        contentToolItem[i].style.width = `calc(${width}px + ${high}px)`;
+        contentToolItem[i].style.transform = `translatey(${high}px)`;
+    }
+});
+
+let highToolHover = 8;
+
+for(let i = 0; i < contentToolItem.length; ++i){
+    contentToolItemFirst[i].addEventListener('mouseover',() => {
+        contentToolItem[i].style.transform = `translatey(calc(${high}px + ${highToolHover}px))`;
+        contentToolItemFirst[i].style.backgroundColor = '#c7c5c5';
+        contentToolItemSecond[i].style.backgroundColor = '#9b9797';
+        contentToolItemThird[i].style.backgroundColor = '#747272';
+        contentToolItemFirst[i].style.color = "#9b9797";
+    });
+    contentToolItemFirst[i].addEventListener('mouseleave',() => {
+        contentToolItem[i].style.transform = `translatey(${high}px)`;
+        contentToolItemFirst[i].style.backgroundColor = '#a2a1a1';
+        contentToolItemSecond[i].style.backgroundColor = '#747272';
+        contentToolItemThird[i].style.backgroundColor = '#3f3e3e';
+        contentToolItemFirst[i].style.color = "#cbcbcb";
+    });
+    contentToolItemSecond[i].addEventListener('mouseover',() => {
+        contentToolItem[i].style.transform = `translatey(calc(${high}px + ${highToolHover}px))`;
+        contentToolItemFirst[i].style.backgroundColor = '#c7c5c5';
+        contentToolItemSecond[i].style.backgroundColor = '#9b9797';
+        contentToolItemThird[i].style.backgroundColor = '#747272';
+        contentToolItemFirst[i].style.color = "#9b9797";
+    });
+    contentToolItemSecond[i].addEventListener('mouseleave',() => {
+        contentToolItem[i].style.transform = `translatey(${high}px)`;
+        contentToolItemFirst[i].style.backgroundColor = '#a2a1a1';
+        contentToolItemSecond[i].style.backgroundColor = '#747272';
+        contentToolItemThird[i].style.backgroundColor = '#3f3e3e';
+        contentToolItemFirst[i].style.color = "#cbcbcb";
+    });
+    contentToolItemThird[i].addEventListener('mouseover',() => {
+        contentToolItem[i].style.transform = `translatey(calc(${high}px + ${highToolHover}px))`;
+        contentToolItemFirst[i].style.backgroundColor = '#c7c5c5';
+        contentToolItemSecond[i].style.backgroundColor = '#9b9797';
+        contentToolItemThird[i].style.backgroundColor = '#747272';
+        contentToolItemFirst[i].style.color = "#9b9797";
+    });
+    contentToolItemThird[i].addEventListener('mouseleave',() => {
+        contentToolItem[i].style.transform = `translatey(${high}px)`;
+        contentToolItemFirst[i].style.backgroundColor = '#a2a1a1';
+        contentToolItemSecond[i].style.backgroundColor = '#747272';
+        contentToolItemThird[i].style.backgroundColor = '#3f3e3e';
+        contentToolItemFirst[i].style.color = "#cbcbcb";
+    });
+}
+
+var contentToolItem = document.getElementsByClassName('content__tool-item');
+var contentFormTool = document.querySelector('.content-form__tool');
+var contentFormToolItem = document.getElementsByClassName('content-form__tool-item');
+var contentFormToolItemTopic = document.getElementsByClassName('content-form__tool-item-topic');
+var contentFormToolItemText = document.getElementsByClassName('content-form__tool-item-text');
+var contentFormToolTitle = document.querySelector('.content-form__tool-title');
+var contentFormToolButtonConfirm = document.querySelector('.content-form__tool-button-confirm');
+var contentFormToolButtonCancel = document.querySelector('.content-form__tool-button-cancel');
+
+for(let i = 0; i < contentToolItem.length; ++i){
+    contentToolItemFirst[i].addEventListener('click',() => {
+        contentFormTool.style.display = 'flex';
+        setTimeout(() => {
+            contentFormTool.style.opacity = 1;
+            contentFormTool.style.transform = 'translate(-50%,-50%)';
+        },0);
+        backgroundSign.style.display = 'block';
+        setTimeout(() => {
+            backgroundSign.style.opacity = 1;
+        },0)
+        if(i == 0){ contentFormToolTitle.innerHTML = `${module.IDRoom}`; }
+        if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; }
+        if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; }
+    })
+    contentToolItemSecond[i].addEventListener('click',() => {
+        contentToolItemFirst[i].click();
+    })
+    contentToolItemThird[i].addEventListener('click',() => {
+        contentToolItemFirst[i].click();
+    })
+}
+
+function funcTurnOffContentFormTool(){
+    contentFormTool.style.opacity = 0;
+    backgroundSign.style.opacity = 0;
+    setTimeout(() => {
+        contentFormTool.style.transform = 'translate(-50%,-70%)';
+        contentFormTool.style.display = 'none';
+        backgroundSign.style.display = 'none';
+    },250);
+}
+
+contentFormToolButtonCancel.addEventListener('click',() => {
+    funcTurnOffContentFormTool();
+});
+
+function funcResetValueContentFormTool(){
+    for(let i = 0; i < contentFormToolItem.length; ++i){
+        contentFormToolItemText[i].value = '';
+    }
+}
+
+contentFormToolButtonConfirm.addEventListener('click',() => {
+    const arrText = new Object();
+    for(let i = 0; i < contentFormToolItem.length; ++i){
+        console.log(contentFormToolItemText[i].value);
+        arrText[contentFormToolItemTopic[i].innerHTML] = contentFormToolItemText[i].value;
+    }
+
+    const keys = Object.keys(arrText);
+
+    const divContentListRoomItem = document.createElement('div');
+    divContentListRoomItem.classList.add('content__listroom-item');
+    const divContentListRoomItemForm = document.createElement('div');
+    divContentListRoomItemForm.classList.add('content__listroom-item-form');
+    const divContentListRoomItemCheck = document.createElement('div');
+    divContentListRoomItemCheck.classList.add('content__listroom-item-check');
+
+    for(let i = 0; i < contentFormToolItem.length - 1; ++i){
+        divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
+                                                    <p class="content__listroom-item-form-item-topic">${keys[i]}:</p>
+                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[i]]}</p>
+                                                </div>`;
+    }
+    divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
+                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[contentFormToolItem.length-1]]}</p>
+                                                </div>`
+    divContentListRoomItem.appendChild(divContentListRoomItemForm);
+    divContentListRoomItem.appendChild(divContentListRoomItemCheck);
+    contentListRoom.appendChild(divContentListRoomItem);
+    console.log(divContentListRoomItem);
+
+    funcResetAttributecontentListRoomItem();
+    funcTurnOffContentFormTool();
+    funcResetValueContentFormTool();
+});

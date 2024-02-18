@@ -11,6 +11,7 @@ D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\controll
 D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\models\people\Customer.java
 D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\models\people\People.java
 D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\models\service\UseService.java
+D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\dao\RoomDAO.java
 D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\models\room\ConvenientRoom.java
 D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\models\time\Date.java
 D:\JavaProjects\appManageHotel-java-pj\src\main\java\com\appManageHotel\dao\DAOInterface.java

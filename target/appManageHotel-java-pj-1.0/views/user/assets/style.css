@@ -231,13 +231,129 @@
   background-color: #565656;
 }
 .container .content {
-  width: 100%;
-  height: 100%;
   grid-area: content;
+}
+.container .content__tool {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin-left: 100px;
+  gap: 10px;
+}
+.container .content__tool-item {
+  top: 20px;
+  position: relative;
+  transition: 0.1s ease-in-out;
+}
+.container .content__tool-item-first {
+  cursor: pointer;
+  font-size: 18px;
+  color: #cbcbcb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial Black;
+  background-color: #a2a1a1;
+  position: absolute;
+}
+.container .content__tool-item-second {
+  cursor: pointer;
+  background-color: #747272;
+  position: absolute;
+}
+.container .content__tool-item-third {
+  cursor: pointer;
+  background-color: #3f3e3e;
+  position: absolute;
+}
+.container .content-form__tool {
+  height: 50%;
+  width: 30%;
+  z-index: 4;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  opacity: 1;
+  transition: 0.25s ease-in-out;
+}
+.container .content-form__tool-title {
+  font-size: 24px;
+  font-family: Comic Sans MS;
+  text-align: center;
+  color: #ffffff;
+}
+.container .content-form__tool-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.container .content-form__tool-item-topic {
+  width: 20%;
+  font-size: 15px;
+  font-style: oblique;
+  font-family: Trebuchet MS;
+  color: #ffffff;
+  font-weight: 800;
+  padding-top: 15px;
+}
+.container .content-form__tool-item-text {
+  width: 35%;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 1px solid #ffffff;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  font-family: Comic Sans MS;
+}
+.container .content-form__tool-button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 15px;
+  padding-right: 20px;
+}
+.container .content-form__tool-button-confirm {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 7px 20px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.25s ease-in-out;
+}
+.container .content-form__tool-button-confirm:hover {
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: #434141;
+}
+.container .content-form__tool-button-cancel {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 7px 20px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.25s ease-in-out;
+}
+.container .content-form__tool-button-cancel:hover {
+  border: 1px solid rgba(0, 0, 0, 0);
+  background-color: #434141;
 }
 .container .content__listroom {
   width: 100%;
-  height: 100%;
   display: grid;
   padding: 20px;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -253,11 +369,11 @@
 .container .content__listroom-item-form {
   cursor: pointer;
   width: 65%;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 246, 246, 0.8);
   transform: translatey(25px);
   z-index: 1;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 3px;
   box-shadow: 3px 0px 6px 0px gray;
   display: flex;
   flex-direction: column;
@@ -282,7 +398,7 @@
 .container .content__listroom-item-form-item:last-child {
   position: absolute;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 2px;
   box-shadow: 3px 0px 4px 0px gray;
   bottom: 0px;
   left: 25%;
@@ -305,9 +421,11 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -70%);
   z-index: 4;
   display: none;
+  opacity: 0;
+  transition: 0.25s ease-in-out;
 }
 .container .sign-times {
   width: 100%;
@@ -561,7 +679,7 @@
   background-color: rgba(238, 230, 230, 0.6);
   z-index: 3;
   transition: 0.25s ease-in-out;
-  opacity: 1;
+  opacity: 0;
 }
 .container .footer {
   grid-area: footer;
