@@ -23,10 +23,12 @@
                         <i class="fab fa-linkedin-in sign-account-in__network-item"></i>
                     </div>
                     <p class="sign-account-in__desc">or use your account</p>
-                    <input type="text" class="sign-account-in__input" placeholder="Email">
-                    <input type="text" class="sign-account-in__input" placeholder="Password">
-                    <a href="#" class="sign-account-in__link-forget">Forgot your password ?</a>
-                    <button class="sign-account-in__button">SIGN IN</button>
+                    <form action="" class="sign-account-in-form" method="">
+                        <input type="text" class="sign-account-in-form__input" placeholder="Email" name="">
+                        <input type="text" class="sign-account-in-form__input" placeholder="Password" name="">
+                        <a href="#" class="sign-account-in-form__link-forget">Forgot your password ?</a>
+                        <input class="sign-account-in-form__submit" value="SIGN IN" type="submit">
+                    </form>
                 </div>
                 <div class="sign-account-up">
                     <h1 class="sign-account-up__title">Create Account</h1>
@@ -36,10 +38,12 @@
                         <i class="fab fa-linkedin-in sign-account-up__network-item"></i>
                     </div>
                     <p class="sign-account-up__desc">or use your email for registration</p>
-                    <input type="text" class="sign-account-up__input" placeholder="Name">
-                    <input type="text" class="sign-account-up__input" placeholder="Email">
-                    <input type="text" class="sign-account-up__input" placeholder="Password">
-                    <button class="sign-account-up__button">SIGN UP</button>
+                    <form action="" class="sign-account-up-form" method="">
+                        <input type="text" class="sign-account-up-form__input" placeholder="Name" name="">
+                        <input type="text" class="sign-account-up-form__input" placeholder="Email" name="">
+                        <input type="text" class="sign-account-up-form__input" placeholder="Password" name="">
+                        <input class="sign-account-up-form__submit" type="submit" value="SIGN UP">
+                    </form>
                 </div>
             </div>
             <div class="sign-move">
@@ -56,7 +60,7 @@
             </div>
         </section>
         <header class="header">
-            <div class="header__dashboard-name">${model.IDRoom}</div>
+            <div class="header__dashboard-name">Manage Hotel</div>
             <div class="header__dashboard">
                 <div class="header__dashboard-search">
                     <input
@@ -149,383 +153,47 @@
                 </div>
             </section>
 
-            <section class="content-form__tool">
+            <form class="content-form__tool" method="post" action="/appManageHotel-java-pj/Home">
                 <h1 class="content-form__tool-title"></h1>
                 <div class="content-form__tool-item">
                     <div class="content-form__tool-item-topic">ID</div>
-                    <input type="text" class="content-form__tool-item-text">
+                    <input type="text" class="content-form__tool-item-text" name="id">
                 </div>
                 <div class="content-form__tool-item">
                     <div class="content-form__tool-item-topic">Type</div>
-                    <input type="text" class="content-form__tool-item-text">
+                    <input type="text" class="content-form__tool-item-text" name="TypeRoom">
                 </div>
                 <div class="content-form__tool-item">
                     <div class="content-form__tool-item-topic">View</div>
-                    <input type="text" class="content-form__tool-item-text">
+                    <input type="text" class="content-form__tool-item-text" name="">
                 </div>
                 <div class="content-form__tool-item">
                     <div class="content-form__tool-item-topic">Cost</div>
-                    <input type="text" class="content-form__tool-item-text">
+                    <input type="text" class="content-form__tool-item-text" name="Money">
                 </div>
-                <div class="content-form__tool-button">
-                    <button class="content-form__tool-button-cancel">CANCEL</button>
-                    <button class="content-form__tool-button-confirm">CONFIRM</button>
+                <div class="content-form__tool-submit">
+                    <button class="content-form__tool-submit-cancel">CANCEL</button>
+                    <input type="submit" class="content-form__tool-submit-confirm" value="CONFIRM">
                 </div>
-            </section>
+            </form>
 
             <div class="content__listroom">
                 <div class="content__listroom-item">
                     <div class="content__listroom-item-form">
                         <div class="content__listroom-item-form-item">
                             <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
+                            <p class="content__listroom-item-form-item-text">Fake</p>
                         </div>
                         <div class="content__listroom-item-form-item">
                             <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
+                            <p class="content__listroom-item-form-item-text">Fake</p>
                         </div>
                         <div class="content__listroom-item-form-item">
                             <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
+                            <p class="content__listroom-item-form-item-text">Fake</p>
                         </div>
                         <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
-                        </div>
-                    </div>
-                    <div class="content__listroom-item-check"></div>
-                </div>
-                <div class="content__listroom-item">
-                    <div class="content__listroom-item-form">
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">ID:</p>
-                            <p class="content__listroom-item-form-item-text">F203</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">Type:</p>
-                            <p class="content__listroom-item-form-item-text">Basic room</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <p class="content__listroom-item-form-item-topic">View:</p>
-                            <p class="content__listroom-item-form-item-text">sea view</p>
-                        </div>
-                        <div class="content__listroom-item-form-item">
-                            <!-- <p class="content__listroom-item-form-item-topic">Cost:</p> -->
-                            <p class="content__listroom-item-form-item-text">600$</p>
+                            <p class="content__listroom-item-form-item-text">Fake</p>
                         </div>
                     </div>
                     <div class="content__listroom-item-check"></div>

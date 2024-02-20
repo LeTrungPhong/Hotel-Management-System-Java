@@ -1,8 +1,7 @@
+
 // variable
 let headerWidth = 200;
 let headerWidthBar = 50;
-
-const module = request.getAttribute("model");
 
 // body
 var bodyContainer = document.querySelector('.container');
@@ -429,8 +428,8 @@ var contentFormToolItem = document.getElementsByClassName('content-form__tool-it
 var contentFormToolItemTopic = document.getElementsByClassName('content-form__tool-item-topic');
 var contentFormToolItemText = document.getElementsByClassName('content-form__tool-item-text');
 var contentFormToolTitle = document.querySelector('.content-form__tool-title');
-var contentFormToolButtonConfirm = document.querySelector('.content-form__tool-button-confirm');
-var contentFormToolButtonCancel = document.querySelector('.content-form__tool-button-cancel');
+var contentFormToolButtonConfirm = document.querySelector('.content-form__tool-submit-confirm');
+var contentFormToolButtonCancel = document.querySelector('.content-form__tool-submit-cancel');
 
 for(let i = 0; i < contentToolItem.length; ++i){
     contentToolItemFirst[i].addEventListener('click',() => {
@@ -443,7 +442,7 @@ for(let i = 0; i < contentToolItem.length; ++i){
         setTimeout(() => {
             backgroundSign.style.opacity = 1;
         },0)
-        if(i == 0){ contentFormToolTitle.innerHTML = `${module.IDRoom}`; }
+        if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; }
         if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; }
         if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; }
     })
@@ -474,8 +473,8 @@ function funcResetValueContentFormTool(){
         contentFormToolItemText[i].value = '';
     }
 }
-
-contentFormToolButtonConfirm.addEventListener('click',() => {
+/*
+	contentFormToolButtonConfirm.addEventListener('click',() => {
     const arrText = new Object();
     for(let i = 0; i < contentFormToolItem.length; ++i){
         console.log(contentFormToolItemText[i].value);
@@ -509,3 +508,39 @@ contentFormToolButtonConfirm.addEventListener('click',() => {
     funcTurnOffContentFormTool();
     funcResetValueContentFormTool();
 });
+*/
+
+var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
+
+fetch(courseAPI)
+    .then(res => res.json())
+    .then(function(courses){
+        var htmls = courses.map(function(course) {
+            return `
+            <div class="content__listroom-item">
+                <div class="content__listroom-item-form">
+                    <div class="content__listroom-item-form-item">
+                        <p class="content__listroom-item-form-item-topic">ID:</p>
+                        <p class="content__listroom-item-form-item-text">${course.id}</p>
+                    </div>
+                    <div class="content__listroom-item-form-item">
+                        <p class="content__listroom-item-form-item-topic">Type:</p>
+                        <p class="content__listroom-item-form-item-text">${course.TypeRoom}</p>
+                    </div>
+                    <div class="content__listroom-item-form-item">
+                        <p class="content__listroom-item-form-item-topic">View:</p>
+                        <p class="content__listroom-item-form-item-text"></p>
+                    </div>
+                    <div class="content__listroom-item-form-item">
+                        <p class="content__listroom-item-form-item-text">${course.Money}</p>
+                    </div>
+                </div>
+                <div class="content__listroom-item-check"></div>
+            </div>
+            `;
+        });
+        contentListRoom.innerHTML += htmls.join('');
+        funcResetAttributecontentListRoomItem();
+        funcTurnOffContentFormTool();
+        funcResetValueContentFormTool();
+    })

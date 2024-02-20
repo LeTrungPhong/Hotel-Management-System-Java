@@ -27,7 +27,7 @@ public class RoomDAO implements DAOInterface<Room> {
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, t.getIDRoom());
+			pstmt.setString(1, t.getID());
 			pstmt.setBoolean(2, t.getCheck());
 			pstmt.setInt(3, t.getMoney());
 			pstmt.setString(4, t.getTypeRoom());
@@ -57,7 +57,7 @@ public class RoomDAO implements DAOInterface<Room> {
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, t.getIDRoom());
+			pstmt.setString(1, t.getID());
 			pstmt.setBoolean(2, t.getCheck());
 			pstmt.setInt(3, t.getMoney());
 			pstmt.setString(4, t.getTypeRoom());
@@ -85,7 +85,7 @@ public class RoomDAO implements DAOInterface<Room> {
 		
 		PreparedStatement pstmt = con.prepareStatement(sql);
 		
-		pstmt.setString(1, t.getIDRoom());
+		pstmt.setString(1, t.getID());
 		
 		int kq = pstmt.executeUpdate();
 		
@@ -141,7 +141,7 @@ public class RoomDAO implements DAOInterface<Room> {
 					+ " WHERE IDService = ?";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, t.getIDRoom());
+			pstmt.setString(1, t.getID());
 			
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {

@@ -2,31 +2,31 @@ package com.appManageHotel.models.room;
 
 public class Room {
 
-	private String IDRoom;
+	private String id;
 	private boolean Check;
 	private int Money;
 	private String TypeRoom;
 
 	public Room() {
-		this.IDRoom = null;
+		this.id = null;
 		this.Check = false;
 		this.Money = 0;
 		this.TypeRoom = null;
 	}
 	
 	public Room(String IDRoom, boolean Check, int Money, String TypeRoom) {
-		this.IDRoom = IDRoom;
+		this.id = IDRoom;
 		this.Check = Check;
 		this.Money = Money;
 		this.TypeRoom = TypeRoom;
 	}
 	
-	public String getIDRoom() {
-		return this.IDRoom;
+	public String getID() {
+		return this.id;
 	}
 	
 	public void setIDRoom(String IDRoom) {
-		this.IDRoom = IDRoom;
+		this.id = IDRoom;
 	}
 	
 	public boolean getCheck() {
@@ -54,7 +54,7 @@ public class Room {
 	}
 	
 	public void PrintRoom() {
-		System.out.print(this.IDRoom + "   ");
+		System.out.print(this.id + "   ");
 		if(this.Check == true) {
 			System.out.print("Trong" + "      ");
 		}
