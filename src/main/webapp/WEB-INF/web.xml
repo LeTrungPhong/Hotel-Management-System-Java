@@ -14,4 +14,12 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.js</url-pattern>
 	</servlet-mapping>
+	<servlet>
+  		<servlet-name>Home</servlet-name>
+  		<servlet-class>com.appManageHotel.controller.user.home.Home</servlet-class>
+  		<init-param>
+    		<param-name>allowedMethods</param-name>
+    		<param-value>GET,POST,PUT,DELETE</param-value>
+  		</init-param>
+	</servlet>
 </web-app>

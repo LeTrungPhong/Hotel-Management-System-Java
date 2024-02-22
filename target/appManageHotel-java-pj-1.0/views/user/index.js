@@ -150,6 +150,16 @@ var contentListRoomItem = document.getElementsByClassName('content__listroom-ite
 var contentListRoomItemForm = document.getElementsByClassName('content__listroom-item-form');
 var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
 
+if(contentListRoomItem.length <= 5){
+	contentListRoom.style.gridTemplateRows = "100%";
+} else if(contentListRoomItem.length <= 10){
+	contentListRoom.style.gridTemplateRows = "50% 50%";
+} else if(contentListRoomItem.length <= 15){
+	contentListRoom.style.gridTemplateRows = "33.3% 33.3% 33.3%";
+} else if(contentListRoomItem.length <= 20){
+	contentListRoom.style.gridTemplateRows = "25% 25% 25% 25%";
+}
+
 function funcResetAttributecontentListRoomItem(){
     for(let i = 0; i < contentListRoomItemForm.length; ++i){
         contentListRoomItemCheck[i].style.transform = "skewx(-20deg)";
@@ -428,8 +438,9 @@ var contentFormToolItem = document.getElementsByClassName('content-form__tool-it
 var contentFormToolItemTopic = document.getElementsByClassName('content-form__tool-item-topic');
 var contentFormToolItemText = document.getElementsByClassName('content-form__tool-item-text');
 var contentFormToolTitle = document.querySelector('.content-form__tool-title');
-var contentFormToolButtonConfirm = document.querySelector('.content-form__tool-submit-confirm');
+var contentFormToolSubmitConfirm = document.querySelector('.content-form__tool-submit-confirm');
 var contentFormToolButtonCancel = document.querySelector('.content-form__tool-submit-cancel');
+var contentFormToolMethod = document.querySelector('.content-form__tool-method');
 
 for(let i = 0; i < contentToolItem.length; ++i){
     contentToolItemFirst[i].addEventListener('click',() => {
@@ -442,9 +453,10 @@ for(let i = 0; i < contentToolItem.length; ++i){
         setTimeout(() => {
             backgroundSign.style.opacity = 1;
         },0)
-        if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; }
-        if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; }
-        if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; }
+        if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; contentFormToolMethod.value= "0"; }
+        if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; contentFormToolMethod.value= "1"; }
+        if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; contentFormToolMethod.value= "2"; }
+        console.log(contentFormTool);
     })
     contentToolItemSecond[i].addEventListener('click',() => {
         contentToolItemFirst[i].click();
@@ -469,48 +481,13 @@ contentFormToolButtonCancel.addEventListener('click',() => {
 });
 
 function funcResetValueContentFormTool(){
-    for(let i = 0; i < contentFormToolItem.length; ++i){
-        contentFormToolItemText[i].value = '';
-    }
+//    for(let i = 0; i < contentFormToolItem.length; ++i){
+//        contentFormToolItemText[i].value = '';
+//    }
 }
-/*
-	contentFormToolButtonConfirm.addEventListener('click',() => {
-    const arrText = new Object();
-    for(let i = 0; i < contentFormToolItem.length; ++i){
-        console.log(contentFormToolItemText[i].value);
-        arrText[contentFormToolItemTopic[i].innerHTML] = contentFormToolItemText[i].value;
-    }
-
-    const keys = Object.keys(arrText);
-
-    const divContentListRoomItem = document.createElement('div');
-    divContentListRoomItem.classList.add('content__listroom-item');
-    const divContentListRoomItemForm = document.createElement('div');
-    divContentListRoomItemForm.classList.add('content__listroom-item-form');
-    const divContentListRoomItemCheck = document.createElement('div');
-    divContentListRoomItemCheck.classList.add('content__listroom-item-check');
-
-    for(let i = 0; i < contentFormToolItem.length - 1; ++i){
-        divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
-                                                    <p class="content__listroom-item-form-item-topic">${keys[i]}:</p>
-                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[i]]}</p>
-                                                </div>`;
-    }
-    divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
-                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[contentFormToolItem.length-1]]}</p>
-                                                </div>`
-    divContentListRoomItem.appendChild(divContentListRoomItemForm);
-    divContentListRoomItem.appendChild(divContentListRoomItemCheck);
-    contentListRoom.appendChild(divContentListRoomItem);
-    console.log(divContentListRoomItem);
-
-    funcResetAttributecontentListRoomItem();
-    funcTurnOffContentFormTool();
-    funcResetValueContentFormTool();
-});
-*/
 
 var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
+//var courseAPI = 'http://localhost:3000/Room';
 
 fetch(courseAPI)
     .then(res => res.json())

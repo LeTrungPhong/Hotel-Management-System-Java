@@ -153,7 +153,7 @@
                 </div>
             </section>
 
-            <form class="content-form__tool" method="post" action="/appManageHotel-java-pj/Home">
+            <form class="content-form__tool" method="POST" action="">
                 <h1 class="content-form__tool-title"></h1>
                 <div class="content-form__tool-item">
                     <div class="content-form__tool-item-topic">ID</div>
@@ -172,9 +172,10 @@
                     <input type="text" class="content-form__tool-item-text" name="Money">
                 </div>
                 <div class="content-form__tool-submit">
-                    <button class="content-form__tool-submit-cancel">CANCEL</button>
+                    <div class="content-form__tool-submit-cancel">CANCEL</div>
                     <input type="submit" class="content-form__tool-submit-confirm" value="CONFIRM">
                 </div>
+                <input type="text" style="display: none" name="requestMethod" class="content-form__tool-method">
             </form>
 
             <div class="content__listroom">
@@ -198,6 +199,7 @@
                     </div>
                     <div class="content__listroom-item-check"></div>
                 </div>
+                
             </div>
         </article>
         <footer class="footer"></footer>

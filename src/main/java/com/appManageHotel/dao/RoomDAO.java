@@ -45,6 +45,7 @@ public class RoomDAO implements DAOInterface<Room> {
 
 	@Override
 	public int update(Room t) {
+		System.out.println("Update");
 		try {
 			
 			Connection con = ConnectDatabase.getConnection();
@@ -53,7 +54,8 @@ public class RoomDAO implements DAOInterface<Room> {
 					+ " SET IDRoom = ?,"
 					+ " CheckBoolean = ?,"
 					+ " MoneyOfRoom = ?,"
-					+ " TypeRoom = ?";
+					+ " TypeRoom = ?"
+					+ " WHERE IDRoom = ?";
 			
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			
@@ -61,6 +63,7 @@ public class RoomDAO implements DAOInterface<Room> {
 			pstmt.setBoolean(2, t.getCheck());
 			pstmt.setInt(3, t.getMoney());
 			pstmt.setString(4, t.getTypeRoom());
+			pstmt.setString(5, t.getID());
 			
 			int kq = pstmt.executeUpdate();
 			
