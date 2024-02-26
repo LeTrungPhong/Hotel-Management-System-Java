@@ -496,6 +496,7 @@ function funcResetValueContentFormTool(){
 var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
 //var courseAPI = 'http://localhost:3000/Room';
 
+/*
 fetch(courseAPI)
     .then(res => res.json())
     .then(function(courses){
@@ -528,3 +529,12 @@ fetch(courseAPI)
         funcTurnOffContentFormTool();
         funcResetValueContentFormTool();
     })
+*/
+
+document.addEventListener("DOMContentLoaded",() => {
+	setTimeout(()=>{
+		funcResetAttributecontentListRoomItem();
+        funcTurnOffContentFormTool();
+        funcResetValueContentFormTool();
+	},500);
+})

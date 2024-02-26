@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="http://localhost:8080/appManageHotel-java-pj/views/user/assets/style.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 <title>Trang chu</title>
 </head>
     <body class="container">
@@ -179,7 +182,7 @@
             </form>
 
             <div class="content__listroom">
-                <div class="content__listroom-item">
+                <!-- <div class="content__listroom-item">
                     <div class="content__listroom-item-form">
                         <div class="content__listroom-item-form-item">
                             <p class="content__listroom-item-form-item-topic">ID:</p>
@@ -198,11 +201,83 @@
                         </div>
                     </div>
                     <div class="content__listroom-item-check"></div>
-                </div>
-                
+                </div> -->
             </div>
         </article>
         <footer class="footer"></footer>
+        <script type="text/babel">
+
+            // <div class="content__listroom-item">
+            //     <div class="content__listroom-item-form">
+            //         <div class="content__listroom-item-form-item">
+            //             <p class="content__listroom-item-form-item-topic">ID:</p>
+            //             <p class="content__listroom-item-form-item-text">${course.id}</p>
+            //         </div>
+            //         <div class="content__listroom-item-form-item">
+            //             <p class="content__listroom-item-form-item-topic">Type:</p>
+            //             <p class="content__listroom-item-form-item-text">${course.TypeRoom}</p>
+            //         </div>
+            //         <div class="content__listroom-item-form-item">
+            //             <p class="content__listroom-item-form-item-topic">View:</p>
+            //             <p class="content__listroom-item-form-item-text"></p>
+            //         </div>
+            //         <div class="content__listroom-item-form-item">
+            //             <p class="content__listroom-item-form-item-text">${course.Money}</p>
+            //         </div>
+            //     </div>
+            //     <div class="content__listroom-item-check"></div>
+            // </div>
+
+            function ContentListItemForm({course}){
+                return (
+                    <div class="content__listroom-item">
+                        <div class="content__listroom-item-form">
+                        <div class="content__listroom-item-form-item">
+                            <p class="content__listroom-item-form-item-topic">ID:</p>
+                            <p class="content__listroom-item-form-item-text">{course.id}</p>
+                        </div>
+                        <div class="content__listroom-item-form-item">
+                            <p class="content__listroom-item-form-item-topic">Type:</p>
+                            <p class="content__listroom-item-form-item-text">{course.TypeRoom}</p>
+                        </div>
+                        <div class="content__listroom-item-form-item">
+                            <p class="content__listroom-item-form-item-topic">View:</p>
+                            <p class="content__listroom-item-form-item-text"></p>
+                        </div>
+                        <div class="content__listroom-item-form-item">
+                            <p class="content__listroom-item-form-item-text">{course.Money}</p>
+                        </div>
+                        </div>
+                        <div class="content__listroom-item-check"></div>
+                    </div>
+                )
+            }
+
+            function RenderContentListItemForm(courses){
+                console.log(courses.APIcourse);
+                return (
+                    courses.APIcourse.map(function(course){
+                        return (
+                            <ContentListItemForm 
+                                id = {course.id}
+                                TypeRoom = {course.TypeRoom}
+                                Money = {course.Money}
+                            />
+                        )
+                    })
+                )
+            }
+
+			var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
+			fetch(courseAPI)
+    			.then(res => res.json())
+    			.then(function(courses){
+                    // console.log(courses);
+                    ReactDOM.render(<RenderContentListItemForm
+                        APIcourse={courses}
+                    />,document.querySelector('.content__listroom'));
+    			});
+		</script>
     </body>
     <script src="http://localhost:8080/appManageHotel-java-pj/views/user/index.js"></script>
 </html>

@@ -150,15 +150,22 @@ var contentListRoomItem = document.getElementsByClassName('content__listroom-ite
 var contentListRoomItemForm = document.getElementsByClassName('content__listroom-item-form');
 var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
 
-if(contentListRoomItem.length <= 5){
-	contentListRoom.style.gridTemplateRows = "100%";
-} else if(contentListRoomItem.length <= 10){
-	contentListRoom.style.gridTemplateRows = "50% 50%";
-} else if(contentListRoomItem.length <= 15){
-	contentListRoom.style.gridTemplateRows = "33.3% 33.3% 33.3%";
-} else if(contentListRoomItem.length <= 20){
-	contentListRoom.style.gridTemplateRows = "25% 25% 25% 25%";
+function funcSetHeightGrid(){
+	console.log(contentListRoomItem.length);
+	if(contentListRoomItem.length <= 5){
+		contentListRoom.style.gridTemplateRows = "100%";
+	} else if(contentListRoomItem.length <= 10){
+		contentListRoom.style.gridTemplateRows = "50% 50%";
+	} else if(contentListRoomItem.length <= 15){
+		contentListRoom.style.gridTemplateRows = "33.3% 33.3% 33.3%";
+	} else if(contentListRoomItem.length <= 20){
+		contentListRoom.style.gridTemplateRows = "25% 25% 25% 25%";
+	}
 }
+
+setTimeout(()=>{
+	funcSetHeightGrid();
+},100)
 
 function funcResetAttributecontentListRoomItem(){
     for(let i = 0; i < contentListRoomItemForm.length; ++i){
@@ -489,6 +496,7 @@ function funcResetValueContentFormTool(){
 var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
 //var courseAPI = 'http://localhost:3000/Room';
 
+/*
 fetch(courseAPI)
     .then(res => res.json())
     .then(function(courses){
@@ -521,3 +529,4 @@ fetch(courseAPI)
         funcTurnOffContentFormTool();
         funcResetValueContentFormTool();
     })
+*/
