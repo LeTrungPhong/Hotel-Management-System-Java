@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman";
+  font-size: 15px;
+  font-family: monospace;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+.container .content-text {
+  height: 10%;
+  width: 50%;
+}
+.container .content-text__input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #b4b3b3;
+  text-align: center;
+  color: #e2e2e2;
+  font-size: 25px;
+  font-family: Comic Sans MS;
+}
+.container .content-text__input::-moz-placeholder {
+  color: #eeebeb;
+}
+.container .content-text__input::placeholder {
+  color: #eeebeb;
+}
+.container .content-text__input:focus {
+  outline: none;
+}
+.container .content-key {
+  width: 50%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeebeb;
+}
+.container .content-key-form {
+  width: 100%;
+  height: 10%;
+  background-color: #a7a6a6;
+}
+.container .content-key .content {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  transform: translatey(90%);
+}
+.container .content-key .content__item {
+  position: relative;
+  transition: 0.1s ease-in-out;
+}
+.container .content-key .content__item-background-1 {
+  background-color: #acaaaa;
+  position: absolute;
+}
+.container .content-key .content__item-background-2 {
+  display: flex;
+  font-family: Tahoma;
+  font-weight: 700;
+  color: gray;
+  background-color: rgb(228, 225, 225);
+  position: absolute;
+}
+.container .content-key .content__item-background-3 {
+  width: 0px;
+  height: 0px;
+  border-left-style: solid;
+  border-left-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-color: #acaaaa;
+  position: absolute;
+}
+.container .content-key .content__item-background-4 {
+  width: 0px;
+  height: 0px;
+  border-right-style: solid;
+  border-right-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-color: #acaaaa;
+  position: absolute;
+}
+.container .content-key .content__item-background-5 {
+  position: absolute;
+  background-color: #bbb8b8;
+}
+.container .content-key .content__item-background-6 {
+  position: absolute;
+  background-color: #bbb8b8;
+}/*# sourceMappingURL=style.css.map */

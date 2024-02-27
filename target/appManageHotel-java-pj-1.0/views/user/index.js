@@ -147,69 +147,32 @@ for(let i = 0; i < navListItem.length; ++i){
 // content
 var contentListRoom = document.querySelector('.content__listroom');
 var contentListRoomItem = document.getElementsByClassName('content__listroom-item');
-var contentListRoomItemForm = document.getElementsByClassName('content__listroom-item-form');
-var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
+var contentListRoomItemID = document.getElementsByClassName('content__listroom-item-id');
+var contentListRoomItemTypeRoom = document.getElementsByClassName('content__listroom-item-TypeRoom');
+var contentListRoomItemMoney = document.getElementsByClassName('content__listroom-item-Money');
+var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-Check');
 
-function funcSetHeightGrid(){
-	console.log(contentListRoomItem.length);
-	if(contentListRoomItem.length <= 5){
-		contentListRoom.style.gridTemplateRows = "100%";
-	} else if(contentListRoomItem.length <= 10){
-		contentListRoom.style.gridTemplateRows = "50% 50%";
-	} else if(contentListRoomItem.length <= 15){
-		contentListRoom.style.gridTemplateRows = "33.3% 33.3% 33.3%";
-	} else if(contentListRoomItem.length <= 20){
-		contentListRoom.style.gridTemplateRows = "25% 25% 25% 25%";
-	}
-}
-
-setTimeout(()=>{
-	funcSetHeightGrid();
-},100)
-
-function funcResetAttributecontentListRoomItem(){
-    for(let i = 0; i < contentListRoomItemForm.length; ++i){
-        contentListRoomItemCheck[i].style.transform = "skewx(-20deg)";
-    
-        setTimeout(() => {
-            contentListRoomItemCheck[i].style.transform = "skewx(-30deg)";
-        },250)
-    }
-    
-    for(let i = 0; i < contentListRoomItemCheck.length; ++i){
-        contentListRoomItemCheck[i].style.height = '50px';
-    }
-    
-    for(let i = 0; i < contentListRoomItemCheck.length; ++i){
-        if(i%3 == 0){
-            contentListRoomItemCheck[i].classList.add('background-color-check-g');
-            contentListRoomItemCheck[i].classList.remove('background-color-check-r');
+function setStyleListRoomItem(){
+    console.log(contentListRoomItem);
+    for(let i = 0; i < contentListRoomItem.length; ++i){
+        if(i % 2 == 0){
+            console.log(i);
+            contentListRoomItem[i].style.backgroundColor = '#fff';
         }
-        else
-        {
-            contentListRoomItemCheck[i].classList.remove('background-color-check-g');
-            contentListRoomItemCheck[i].classList.add('background-color-check-r');
-        }
-    }
-    
-    for(let i = 0; i < contentListRoomItemForm.length; ++i){
-        contentListRoomItemForm[i].addEventListener('mouseover',() => {
-            contentListRoomItemForm[i].style.boxShadow = "4px 0px 6px 1px gray";
-            contentListRoomItemCheck[i].style.transform = "skewx(-20deg)";
-        })
-    }
-    
-    for(let i = 0; i < contentListRoomItemForm.length; ++i){
-        contentListRoomItemForm[i].addEventListener('mouseleave',() => {
-            contentListRoomItemForm[i].style.boxShadow = "3px 0px 6px 0px gray";
-            contentListRoomItemCheck[i].style.transform = "skewx(-30deg)";
-        })
     }
 }
 
-document.addEventListener('DOMContentLoaded',() => {
-    funcResetAttributecontentListRoomItem();
-})
+function setTitleListRoomItem(){
+
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+    setTimeout(()=>{
+        setStyleListRoomItem();
+        
+    },100);
+});
+
 
 // sign
 var sign = document.querySelector('.sign');
@@ -447,7 +410,6 @@ var contentFormToolItemText = document.getElementsByClassName('content-form__too
 var contentFormToolTitle = document.querySelector('.content-form__tool-title');
 var contentFormToolSubmitConfirm = document.querySelector('.content-form__tool-submit-confirm');
 var contentFormToolButtonCancel = document.querySelector('.content-form__tool-submit-cancel');
-var contentFormToolMethod = document.querySelector('.content-form__tool-method');
 
 for(let i = 0; i < contentToolItem.length; ++i){
     contentToolItemFirst[i].addEventListener('click',() => {
@@ -460,9 +422,9 @@ for(let i = 0; i < contentToolItem.length; ++i){
         setTimeout(() => {
             backgroundSign.style.opacity = 1;
         },0)
-        if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; contentFormToolMethod.value= "0"; }
-        if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; contentFormToolMethod.value= "1"; }
-        if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; contentFormToolMethod.value= "2"; }
+        if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; contentFormTool.method = "Post"; }
+        if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; contentFormTool.method = "Delete"; }
+        if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; contentFormTool.method = "Put"; } 
         console.log(contentFormTool);
     })
     contentToolItemSecond[i].addEventListener('click',() => {
@@ -488,45 +450,85 @@ contentFormToolButtonCancel.addEventListener('click',() => {
 });
 
 function funcResetValueContentFormTool(){
-//    for(let i = 0; i < contentFormToolItem.length; ++i){
-//        contentFormToolItemText[i].value = '';
-//    }
+    for(let i = 0; i < contentFormToolItem.length; ++i){
+        contentFormToolItemText[i].value = '';
+    }
 }
 
-var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
-//var courseAPI = 'http://localhost:3000/Room';
+contentFormToolSubmitConfirm.addEventListener('click',() => {
+    const arrText = new Object();
+    for(let i = 0; i < contentFormToolItem.length; ++i){
+        console.log(contentFormToolItemText[i].value);
+        arrText[contentFormToolItemTopic[i].innerHTML] = contentFormToolItemText[i].value;
+    }
 
-/*
-fetch(courseAPI)
-    .then(res => res.json())
-    .then(function(courses){
-        var htmls = courses.map(function(course) {
-            return `
-            <div class="content__listroom-item">
-                <div class="content__listroom-item-form">
-                    <div class="content__listroom-item-form-item">
-                        <p class="content__listroom-item-form-item-topic">ID:</p>
-                        <p class="content__listroom-item-form-item-text">${course.id}</p>
-                    </div>
-                    <div class="content__listroom-item-form-item">
-                        <p class="content__listroom-item-form-item-topic">Type:</p>
-                        <p class="content__listroom-item-form-item-text">${course.TypeRoom}</p>
-                    </div>
-                    <div class="content__listroom-item-form-item">
-                        <p class="content__listroom-item-form-item-topic">View:</p>
-                        <p class="content__listroom-item-form-item-text"></p>
-                    </div>
-                    <div class="content__listroom-item-form-item">
-                        <p class="content__listroom-item-form-item-text">${course.Money}</p>
-                    </div>
-                </div>
-                <div class="content__listroom-item-check"></div>
-            </div>
-            `;
-        });
-        contentListRoom.innerHTML += htmls.join('');
-        funcResetAttributecontentListRoomItem();
+    const keys = Object.keys(arrText);
+
+    const divContentListRoomItem = document.createElement('div');
+    divContentListRoomItem.classList.add('content__listroom-item');
+    const divContentListRoomItemForm = document.createElement('div');
+    divContentListRoomItemForm.classList.add('content__listroom-item-form');
+    const divContentListRoomItemCheck = document.createElement('div');
+    divContentListRoomItemCheck.classList.add('content__listroom-item-check');
+
+    for(let i = 0; i < contentFormToolItem.length - 1; ++i){
+        divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
+                                                    <p class="content__listroom-item-form-item-topic">${keys[i]}:</p>
+                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[i]]}</p>
+                                                </div>`;
+    }
+    divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
+                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[contentFormToolItem.length-1]]}</p>
+                                                </div>`
+    divContentListRoomItem.appendChild(divContentListRoomItemForm);
+    divContentListRoomItem.appendChild(divContentListRoomItemCheck);
+    contentListRoom.appendChild(divContentListRoomItem);
+    console.log(divContentListRoomItem);
+
+    funcResetAttributecontentListRoomItem();
+    funcTurnOffContentFormTool();
+    funcResetValueContentFormTool();
+});
+
+// var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
+// var courseAPI = 'http://localhost:3000/Room';
+
+// fetch(courseAPI)
+//     .then(res => res.json())
+//     .then(function(courses){
+//         var htmls = courses.map(function(course) {
+//             return `
+//             <div class="content__listroom-item">
+//                 <div class="content__listroom-item-form">
+//                     <div class="content__listroom-item-form-item">
+//                         <p class="content__listroom-item-form-item-topic">ID:</p>
+//                         <p class="content__listroom-item-form-item-text">${course.id}</p>
+//                     </div>
+//                     <div class="content__listroom-item-form-item">
+//                         <p class="content__listroom-item-form-item-topic">Type:</p>
+//                         <p class="content__listroom-item-form-item-text">${course.TypeRoom}</p>
+//                     </div>
+//                     <div class="content__listroom-item-form-item">
+//                         <p class="content__listroom-item-form-item-topic">View:</p>
+//                         <p class="content__listroom-item-form-item-text"></p>
+//                     </div>
+//                     <div class="content__listroom-item-form-item">
+//                         <p class="content__listroom-item-form-item-text">${course.Money}</p>
+//                     </div>
+//                 </div>
+//                 <div class="content__listroom-item-check"></div>
+//             </div>
+//             `;
+//         });
+//         contentListRoom.innerHTML += htmls.join('');
+//         funcResetAttributecontentListRoomItem();
+//         funcTurnOffContentFormTool();
+//         funcResetValueContentFormTool();
+//     })
+
+document.addEventListener('DOMContentLoaded',()=>{
+    setTimeout(()=>{
         funcTurnOffContentFormTool();
         funcResetValueContentFormTool();
-    })
-*/
+    },100);
+});

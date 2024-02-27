@@ -7,6 +7,14 @@
   font-family: monospace;
 }
 
+.color-green {
+  color: green;
+}
+
+.color-red {
+  color: red;
+}
+
 .dp-n {
   display: none;
 }
@@ -232,6 +240,9 @@
 }
 .container .content {
   grid-area: content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container .content__tool {
   height: 10%;
@@ -353,66 +364,64 @@
   background-color: #434141;
 }
 .container .content__listroom {
-  width: 100%;
-  display: grid;
-  padding: 20px;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-}
-.container .content__listroom-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  grid-template-areas: area;
-  margin: auto 0px 0px 0px;
-}
-.container .content__listroom-item-form {
-  cursor: pointer;
-  width: 65%;
-  background-color: rgba(255, 246, 246, 0.8);
-  transform: translatey(25px);
-  z-index: 1;
-  padding: 15px;
-  border-radius: 3px;
-  box-shadow: 3px 0px 6px 0px gray;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.container .content__listroom-item-form-item {
-  display: flex;
-}
-.container .content__listroom-item-form-item-topic {
-  font-size: 14px;
-  width: 40%;
-  font-family: cursive;
-}
-.container .content__listroom-item-form-item-text {
-  font-size: 14px;
-  font-weight: 600;
-  font-family: Comic Sans MS;
-  width: 60%;
-  white-space: nowrap;
+  width: 80%;
+  height: 80%;
+  background-color: #F4F7FC;
+  border-radius: 5px;
+  outline: 1px solid rgb(226, 226, 226);
   overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 3px 1px rgb(201, 201, 201);
 }
-.container .content__listroom-item-form-item:last-child {
-  position: absolute;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 3px 0px 4px 0px gray;
-  bottom: 0px;
-  left: 25%;
-  right: 25%;
+.container .content__listroom-item:first-child .content__listroom-item-id {
+  font-weight: 600;
+  font-size: 17px;
+  font-family: sans-serif;
+  color: gray;
+}
+.container .content__listroom-item:first-child .content__listroom-item-TypeRoom {
+  font-weight: 600;
+  font-size: 17px;
+  font-family: sans-serif;
+  color: gray;
+}
+.container .content__listroom-item:first-child .content__listroom-item-Money {
+  font-weight: 600;
+  font-size: 17px;
+  color: gray;
+  font-family: sans-serif;
+}
+.container .content__listroom-item:first-child .content__listroom-item-check {
+  font-weight: 600;
+  font-size: 17px;
+  color: gray;
+  font-family: sans-serif;
+}
+.container .content__listroom-item-id {
+  width: 25%;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: Tahoma;
+  padding: 10px;
+}
+.container .content__listroom-item-TypeRoom {
+  width: 25%;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: Tahoma;
+  padding: 10px;
+}
+.container .content__listroom-item-Money {
+  width: 25%;
+  font-size: 14px;
+  font-family: Comic Sans MS;
+  padding: 10px;
   text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(15px);
 }
 .container .content__listroom-item-check {
-  width: 85%;
-  box-shadow: 0px 7px 6px 0px gray;
-  transform: skewx(-30deg);
-  transition: 0.25s ease-in-out;
+  width: 25%;
+  padding: 10px;
+  text-align: center;
 }
 .container .sign {
   width: 45vw;

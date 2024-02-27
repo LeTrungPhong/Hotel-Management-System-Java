@@ -5,9 +5,11 @@ com\appManageHotel\dao\CustomerDAO.class
 com\appManageHotel\models\room\Room.class
 com\appManageHotel\controller\user\homedata\HomeData.class
 com\appManageHotel\database\ConnectDatabase.class
+com\appManageHotel\controller\user\home\Homecss.class
 com\appManageHotel\controller\admin\Home.class
 com\appManageHotel\models\time\Date.class
 com\appManageHotel\models\service\UseService.class
+com\appManageHotel\controller\user\home\Homejs.class
 com\appManageHotel\http\HttpURLConnectionExample.class
 com\appManageHotel\models\service\Service.class
 com\appManageHotel\dao\ServiceDAO.class

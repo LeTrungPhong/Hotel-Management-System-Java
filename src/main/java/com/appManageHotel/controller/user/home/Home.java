@@ -43,8 +43,8 @@ public class Home extends HttpServlet{
 //			HttpURLConnectionExample.getInstance().sendPOST(item);
 //		}
 			
-		RequestDispatcher rd = request.getRequestDispatcher("/views/user/home.jsp");
-		rd.forward(request, response);
+		RequestDispatcher rd1 = request.getRequestDispatcher("/views/user/home.jsp");
+		rd1.forward(request, response);
 	}
 	
 	@Override 
