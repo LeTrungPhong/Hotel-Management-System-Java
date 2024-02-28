@@ -372,56 +372,123 @@
   overflow: hidden;
   border-collapse: collapse;
   box-shadow: 0px 0px 3px 1px rgb(201, 201, 201);
+  position: relative;
 }
-.container .content__listroom-item:first-child .content__listroom-item-id {
+.container .content__listroom-button {
   font-weight: 600;
+  color: #ffffff;
+  padding: 8px;
   font-size: 17px;
-  font-family: sans-serif;
-  color: gray;
+  border: none;
+  top: 15px;
+  right: 40px;
+  background-color: rgb(170, 170, 255);
+  position: absolute;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
 }
-.container .content__listroom-item:first-child .content__listroom-item-TypeRoom {
-  font-weight: 600;
-  font-size: 17px;
-  font-family: sans-serif;
-  color: gray;
+.container .content__listroom-button:hover {
+  background-color: rgb(196, 196, 250);
 }
-.container .content__listroom-item:first-child .content__listroom-item-Money {
-  font-weight: 600;
-  font-size: 17px;
-  color: gray;
-  font-family: sans-serif;
+.container .content__listroom-button-img {
+  font-size: 15px;
 }
-.container .content__listroom-item:first-child .content__listroom-item-check {
-  font-weight: 600;
-  font-size: 17px;
-  color: gray;
-  font-family: sans-serif;
+.container .content__listroom-space {
+  display: flex;
+  padding-top: 60px;
+}
+.container .content__listroom-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 15px;
+  top: 15px;
+  left: 30px;
+}
+.container .content__listroom-search-img {
+  font-size: 25px;
+}
+.container .content__listroom-search-input {
+  border: none;
+  background-color: #ebebeb;
+  color: #434141;
+  font-size: 15px;
+  padding: 10px 10px 10px 35px;
+  font-family: Tahoma;
+  letter-spacing: 2px;
+  border-radius: 2px;
+}
+.container .content__listroom-search-input:focus {
+  outline: none;
+}
+.container .content__listroom-search-input-img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0px;
+}
+.container .content__listroom-search-input-form {
+  position: relative;
+}
+.container .content__listroom-item-icon {
+  font-size: 15px;
 }
 .container .content__listroom-item-id {
-  width: 25%;
+  width: 15%;
   font-weight: 500;
   font-size: 14px;
   font-family: Tahoma;
   padding: 10px;
 }
 .container .content__listroom-item-TypeRoom {
-  width: 25%;
+  width: 40%;
   font-weight: 500;
   font-size: 14px;
   font-family: Tahoma;
   padding: 10px;
 }
 .container .content__listroom-item-Money {
-  width: 25%;
+  width: 15%;
   font-size: 14px;
   font-family: Comic Sans MS;
   padding: 10px;
   text-align: center;
 }
 .container .content__listroom-item-check {
-  width: 25%;
+  width: 15%;
   padding: 10px;
   text-align: center;
+}
+.container .content__listroom-item-img {
+  width: 15%;
+  text-align: end;
+  padding: 0px 20px;
+}
+.container .content__listroom-item-img-item {
+  font-size: 15px;
+  color: rgb(112, 112, 112);
+  margin: 0px 10px;
+}
+.container .content__listroom-item-img-item:hover {
+  cursor: pointer;
+}
+.container .content__listroom-item-img .update {
+  transition: 0.25s ease;
+}
+.container .content__listroom-item-img .delete {
+  transition: 0.25s ease;
 }
 .container .sign {
   width: 45vw;

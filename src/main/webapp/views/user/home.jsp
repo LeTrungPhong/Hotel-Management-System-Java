@@ -199,6 +199,11 @@
                         <td className="content__listroom-item-check">
                             {course.Check?<input type="checkbox" name="" id="" disabled checked/>:<input type="checkbox" name="" id="" disabled/>}
                         </td>
+                        <td className="content__listroom-item-img">
+                            <i className="fa fa-pen content__listroom-item-img-item update"></i>
+                            <i className="fa fa-trash content__listroom-item-img-item delete"></i>
+                            <i className="fa fa-book-open content__listroom-item-img-item desc"></i>
+                        </td>
                     </tr>
                 )
             }
@@ -207,11 +212,22 @@
                 console.log(courses.APIcourse);
                 return (
                     <React.Fragment>
+                        <div className="content__listroom-search">
+                            <i class="fa fa-folder-open content__listroom-search-img"></i>
+                            <div className="content__listroom-search-input-form">
+                                <input className="content__listroom-search-input" type="text" placeholder=" Search"/>
+                                <img className="content__listroom-search-input-img" src="./assets/img/magnifying-glass-solid.svg" alt=""/>
+                            </div>
+                        </div>
+                        <button className="content__listroom-button"><i className="fa fa-plus content__listroom-button-img"></i> Insert room</button>
+                        <tr className="content__listroom-space">
+                        </tr>
                         <tr className="content__listroom-item">
-                            <td className="content__listroom-item-id">ID</td>
-                            <td className="content__listroom-item-TypeRoom">TypeRoom</td>
-                            <td className="content__listroom-item-Money">Money</td>
-                            <td className="content__listroom-item-check">Check</td>
+                            <td className="content__listroom-item-id">ID <i class="fa fa-sort content__listroom-item-icon"></i></td>
+                            <td className="content__listroom-item-TypeRoom">TypeRoom <i class="fa fa-sort content__listroom-item-icon"></i></td>
+                            <td className="content__listroom-item-Money"><i class="fa fa-dollar-sign content__listroom-item-icon"></i> Money</td>
+                            <td className="content__listroom-item-check">Check <i class="fa fa-check content__listroom-item-icon"></i></td>
+                            <td className="content__listroom-item-img"></td>
                         </tr>
                         {courses.APIcourse.map(function(course){
                                 return (
@@ -227,7 +243,7 @@
                 )
             }
 
-			var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
+			var courseAPI = 'http://localhost:3000/Room';
 			fetch(courseAPI)
     			.then(res => res.json())
     			.then(function(courses){

@@ -150,12 +150,12 @@ var contentListRoomItem = document.getElementsByClassName('content__listroom-ite
 var contentListRoomItemID = document.getElementsByClassName('content__listroom-item-id');
 var contentListRoomItemTypeRoom = document.getElementsByClassName('content__listroom-item-TypeRoom');
 var contentListRoomItemMoney = document.getElementsByClassName('content__listroom-item-Money');
-var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-Check');
+var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
 
 function setStyleListRoomItem(){
     console.log(contentListRoomItem);
     for(let i = 0; i < contentListRoomItem.length; ++i){
-        if(i % 2 == 0){
+        if(i % 2 != 0){
             console.log(i);
             contentListRoomItem[i].style.backgroundColor = '#fff';
         }
@@ -163,13 +163,16 @@ function setStyleListRoomItem(){
 }
 
 function setTitleListRoomItem(){
-
+    contentListRoomItemID[0].style = "font-weight: 600;font-size: 17px;font-family: sans-serif;color: gray;";
+    contentListRoomItemTypeRoom[0].style = "font-weight: 600;font-size: 17px;font-family: sans-serif;color: gray;";
+    contentListRoomItemMoney[0].style = "font-weight: 600;font-size: 17px;color: gray;font-family: sans-serif;";
+    contentListRoomItemCheck[0].style = "font-weight: 600;font-size: 17px;color: gray;font-family: sans-serif;";
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
     setTimeout(()=>{
         setStyleListRoomItem();
-        
+        setTitleListRoomItem();
     },100);
 });
 
@@ -411,9 +414,8 @@ var contentFormToolTitle = document.querySelector('.content-form__tool-title');
 var contentFormToolSubmitConfirm = document.querySelector('.content-form__tool-submit-confirm');
 var contentFormToolButtonCancel = document.querySelector('.content-form__tool-submit-cancel');
 
-for(let i = 0; i < contentToolItem.length; ++i){
-    contentToolItemFirst[i].addEventListener('click',() => {
-        contentFormTool.style.display = 'flex';
+function funcTurnOnContentFormTool(){
+    contentFormTool.style.display = 'flex';
         setTimeout(() => {
             contentFormTool.style.opacity = 1;
             contentFormTool.style.transform = 'translate(-50%,-50%)';
@@ -422,6 +424,11 @@ for(let i = 0; i < contentToolItem.length; ++i){
         setTimeout(() => {
             backgroundSign.style.opacity = 1;
         },0)
+}
+
+for(let i = 0; i < contentToolItem.length; ++i){
+    contentToolItemFirst[i].addEventListener('click',() => {
+        funcTurnOnContentFormTool();
         if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; contentFormTool.method = "Post"; }
         if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; contentFormTool.method = "Delete"; }
         if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; contentFormTool.method = "Put"; } 
@@ -435,6 +442,16 @@ for(let i = 0; i < contentToolItem.length; ++i){
     })
 }
 
+setTimeout(()=>{
+    const contentListRoomItemButton = document.querySelector('.content__listroom-button');
+    console.log(contentListRoomItemButton);
+    contentListRoomItemButton.addEventListener('click',()=>{
+        funcTurnOnContentFormTool();
+        funcResetValueContentFormTool();
+        contentFormToolTitle.innerHTML = 'Insert room';
+    });
+},100);
+
 function funcTurnOffContentFormTool(){
     contentFormTool.style.opacity = 0;
     backgroundSign.style.opacity = 0;
@@ -445,8 +462,23 @@ function funcTurnOffContentFormTool(){
     },250);
 }
 
+function UnblockInput(){
+    contentFormToolItemText[0].disabled = false;
+    contentFormToolItemText[1].disabled = false;
+    contentFormToolItemText[2].disabled = false;
+    contentFormToolItemText[3].disabled = false;
+}
+
+function blockInput(){
+    contentFormToolItemText[0].disabled = true;
+    contentFormToolItemText[1].disabled = true;
+    contentFormToolItemText[2].disabled = true;
+    contentFormToolItemText[3].disabled = true;
+}
+
 contentFormToolButtonCancel.addEventListener('click',() => {
     funcTurnOffContentFormTool();
+    UnblockInput();
 });
 
 function funcResetValueContentFormTool(){
@@ -531,4 +563,44 @@ document.addEventListener('DOMContentLoaded',()=>{
         funcTurnOffContentFormTool();
         funcResetValueContentFormTool();
     },100);
+});
+
+function getDataListRoomItem(i){
+    contentFormToolItemText[0].value = contentListRoomItemID[i].innerHTML;
+    contentFormToolItemText[1].value = contentListRoomItemTypeRoom[i].innerHTML;
+    contentFormToolItemText[3].value = contentListRoomItemMoney[i].innerHTML;
+}
+
+document.addEventListener('DOMContentLoaded',() => {
+    setTimeout(() => {
+        var updateRoom = document.getElementsByClassName('update');
+        var deleteRoom = document.getElementsByClassName('delete');
+        var descRoom = document.getElementsByClassName('desc');
+
+        for(let i = 0; i < updateRoom.length; ++i){
+            updateRoom[i].addEventListener('mouseover',()=>{
+                updateRoom[i].style.transform = "rotate(90deg)";
+            });
+            updateRoom[i].addEventListener('mouseleave',()=>{
+                updateRoom[i].style.transform = "rotate(0deg)";
+            });
+            updateRoom[i].addEventListener('click',()=>{
+                funcTurnOnContentFormTool();
+                contentFormToolTitle.innerHTML = 'Update room';
+                getDataListRoomItem(i+1);
+            });
+            deleteRoom[i].addEventListener('mouseover',()=>{
+                deleteRoom[i].style.transform = "rotate(30deg)";
+            });
+            deleteRoom[i].addEventListener('mouseleave',()=>{
+                deleteRoom[i].style.transform = "rotate(0deg)";
+            });
+            deleteRoom[i].addEventListener('click',()=>{
+                funcTurnOnContentFormTool();
+                contentFormToolTitle.innerHTML = 'Delete room';
+                getDataListRoomItem(i+1);
+                blockInput();
+            });
+        }
+    },100)
 });
