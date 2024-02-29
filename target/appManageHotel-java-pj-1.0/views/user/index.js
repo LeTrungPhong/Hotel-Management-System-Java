@@ -153,13 +153,8 @@ var contentListRoomItemMoney = document.getElementsByClassName('content__listroo
 var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
 
 function setStyleListRoomItem(){
-    console.log(contentListRoomItem);
-    for(let i = 0; i < contentListRoomItem.length; ++i){
-        if(i % 2 != 0){
-            console.log(i);
-            contentListRoomItem[i].style.backgroundColor = '#fff';
-        }
-    }
+    contentListRoomItem[0].style.backgroundColor = '#F4F7FC';
+    contentListRoomItem[contentListRoomItem.length-1].style.backgroundColor = "#fff";
 }
 
 function setTitleListRoomItem(){
@@ -432,7 +427,6 @@ for(let i = 0; i < contentToolItem.length; ++i){
         if(i == 0){ contentFormToolTitle.innerHTML = 'Insert room'; contentFormTool.method = "Post"; }
         if(i == 1){ contentFormToolTitle.innerHTML = 'Delete room'; contentFormTool.method = "Delete"; }
         if(i == 2){ contentFormToolTitle.innerHTML = 'Update room'; contentFormTool.method = "Put"; } 
-        console.log(contentFormTool);
     })
     contentToolItemSecond[i].addEventListener('click',() => {
         contentToolItemFirst[i].click();
@@ -443,8 +437,7 @@ for(let i = 0; i < contentToolItem.length; ++i){
 }
 
 setTimeout(()=>{
-    const contentListRoomItemButton = document.querySelector('.content__listroom-button');
-    console.log(contentListRoomItemButton);
+    var contentListRoomItemButton = document.querySelector('.content__listroom-button');
     contentListRoomItemButton.addEventListener('click',()=>{
         funcTurnOnContentFormTool();
         funcResetValueContentFormTool();
@@ -490,7 +483,6 @@ function funcResetValueContentFormTool(){
 contentFormToolSubmitConfirm.addEventListener('click',() => {
     const arrText = new Object();
     for(let i = 0; i < contentFormToolItem.length; ++i){
-        console.log(contentFormToolItemText[i].value);
         arrText[contentFormToolItemTopic[i].innerHTML] = contentFormToolItemText[i].value;
     }
 
@@ -515,7 +507,6 @@ contentFormToolSubmitConfirm.addEventListener('click',() => {
     divContentListRoomItem.appendChild(divContentListRoomItemForm);
     divContentListRoomItem.appendChild(divContentListRoomItemCheck);
     contentListRoom.appendChild(divContentListRoomItem);
-    console.log(divContentListRoomItem);
 
     funcResetAttributecontentListRoomItem();
     funcTurnOffContentFormTool();
@@ -579,7 +570,7 @@ document.addEventListener('DOMContentLoaded',() => {
 
         for(let i = 0; i < updateRoom.length; ++i){
             updateRoom[i].addEventListener('mouseover',()=>{
-                updateRoom[i].style.transform = "rotate(90deg)";
+                updateRoom[i].style.transform = "rotate(45deg)";
             });
             updateRoom[i].addEventListener('mouseleave',()=>{
                 updateRoom[i].style.transform = "rotate(0deg)";

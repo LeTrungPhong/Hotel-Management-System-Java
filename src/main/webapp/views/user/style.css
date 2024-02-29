@@ -365,7 +365,6 @@
 }
 .container .content__listroom {
   width: 80%;
-  height: 80%;
   background-color: #F4F7FC;
   border-radius: 5px;
   outline: 1px solid rgb(226, 226, 226);
@@ -373,6 +372,7 @@
   border-collapse: collapse;
   box-shadow: 0px 0px 3px 1px rgb(201, 201, 201);
   position: relative;
+  margin-top: 50px;
 }
 .container .content__listroom-button {
   font-weight: 600;
@@ -438,9 +438,42 @@
   top: 0;
   bottom: 0;
   margin: auto 0px;
+  color: rgb(112, 112, 112);
 }
 .container .content__listroom-search-input-form {
   position: relative;
+}
+.container .content__listroom-item:last-child .content__listroom-item-arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 8px;
+  color: rgb(112, 112, 112);
+}
+.container .content__listroom-item:nth-child(odd) {
+  background-color: #fff;
+}
+.container .content__listroom-item:hover {
+  background-color: rgb(241, 241, 241);
+}
+.container .content__listroom-item-linepage {
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-size: 12px;
+  font-family: Lucida Sans Unicode;
+  color: #434141;
+}
+.container .content__listroom-item-arrow-item {
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+.container .content__listroom-item-arrow-item:hover {
+  color: #919090;
+  background-color: #e0e0e0;
+}
+.container .content__listroom-item-arrow-button {
+  display: none;
 }
 .container .content__listroom-item-icon {
   font-size: 15px;
@@ -483,6 +516,13 @@
 }
 .container .content__listroom-item-img-item:hover {
   cursor: pointer;
+}
+.container .content__listroom-item-img-item:last-child {
+  border-radius: 100%;
+  padding: 5px;
+}
+.container .content__listroom-item-img-item:last-child:hover {
+  background-color: #fff;
 }
 .container .content__listroom-item-img .update {
   transition: 0.25s ease;

@@ -190,6 +190,9 @@
 	</article>
 	<footer class="footer"></footer>
 	<script type="text/babel">
+
+            const {useState} = React;
+
             function ContentListItemForm(course){
                 return (
                     <tr className="content__listroom-item">
@@ -200,38 +203,66 @@
                             {course.Check?<input type="checkbox" name="" id="" disabled checked/>:<input type="checkbox" name="" id="" disabled/>}
                         </td>
                         <td className="content__listroom-item-img">
-                            <img className="content__listroom-item-img-item update" src="./assets/img/pen-to-square-solid.svg" alt=""/>
-                            <img className="content__listroom-item-img-item delete" src="./assets/img/trash-solid.svg" alt=""/>
-                            <img className="content__listroom-item-img-item desc" src="./assets/img/ellipsis-solid.svg" alt=""/>
+                            <i className="fas fa-edit content__listroom-item-img-item update"></i>
+                            <i className="fa fa-trash content__listroom-item-img-item delete"></i>
+                            <i class="fas fa-ellipsis-h content__listroom-item-img-item desc"></i>
                         </td>
                     </tr>
                 )
             }
 
             function RenderContentListItemForm(courses){
-                console.log(courses.APIcourse);
+
+                const [count,setCount] = useState([0,courses.APIcourse.length>=10?10:courses.APIcourse.length]);
+
+                const handleRenderDataUp = () => {
+                    if(count[1] == courses.APIcourse.length){
+                        setCount((prev) => prev);
+                    }
+                    else if(count[1] + 10 > courses.APIcourse.length){
+                        setCount((prev) => [count[0] + 10, courses.APIcourse.length]);
+                    } else {
+                        setCount((prev) => [count[0] + 10, count[1] + 10]);
+                    }
+                }
+
+                const handleRenderDataDown = () => {
+                    if(count[0] == 0){
+                        setCount((prev) => prev)
+                    } else if(count[1] == courses.APIcourse.length){
+                        setCount((prev) => [prev[0] - 10, prev[0]]);
+                    } else {
+                        setCount((prev) => [prev[0] - 10, prev[1] - 10]);
+                    }
+                }
+
+                const getRenderData = courses.APIcourse.slice(count[0],count[1]);
+                console.log(getRenderData);
+                console.log(count[0]);
+                console.log(count[1]);
+
                 return (
                     <React.Fragment>
                         <div className="content__listroom-search">
-                            <img className="content__listroom-search-img" src="./assets/img/house-signal-solid.svg" alt="" />
+                            <i className="fa fa-layer-group content__listroom-search-img"></i>
                             <div className="content__listroom-search-input-form">
                                 <input className="content__listroom-search-input" type="text" placeholder=" Search"/>
-                                <img className="content__listroom-search-input-img" src="./assets/img/magnifying-glass-solid.svg" alt=""/>
+                                <i class="fas fa-search content__listroom-search-input-img"></i>
                             </div>
                         </div>
-                        <button className="content__listroom-button"><img className="content__listroom-button-img" src="./assets/img/plus-solid.svg" alt=""/> Insert room</button>
+                        <button className="content__listroom-button"><i className="fa fa-plus content__listroom-button-img"></i> Insert room</button>
                         <tr className="content__listroom-space">
                         </tr>
                         <tr className="content__listroom-item">
-                            <td className="content__listroom-item-id">ID <img className="content__listroom-item-icon" src="./assets/img/sort-solid.svg" alt=""/></td>
-                            <td className="content__listroom-item-TypeRoom">TypeRoom <img className="content__listroom-item-icon" src="./assets/img/sort-solid.svg" alt=""/></td>
-                            <td className="content__listroom-item-Money"><img className="content__listroom-item-icon" src="./assets/img/dollar-sign-solid.svg" alt=""/> Money</td>
-                            <td className="content__listroom-item-check">Check <img className="content__listroom-item-icon" src="./assets/img/check-solid.svg" alt=""/></td>
+                            <td className="content__listroom-item-id">ID <i class="fa fa-sort content__listroom-item-icon"></i></td>
+                            <td className="content__listroom-item-TypeRoom">TypeRoom <i class="fa fa-sort content__listroom-item-icon"></i></td>
+                            <td className="content__listroom-item-Money"><i class="fa fa-dollar-sign content__listroom-item-icon"></i> Money</td>
+                            <td className="content__listroom-item-check">Check <i class="fa fa-check content__listroom-item-icon"></i></td>
                             <td className="content__listroom-item-img"></td>
                         </tr>
-                        {courses.APIcourse.map(function(course){
+                        {getRenderData.map(function(course){
                                 return (
-                                        <ContentListItemForm 
+                                        <ContentListItemForm
                                             id = {course.id}
                                             TypeRoom = {course.TypeRoom}
                                             Money = {course.Money}
@@ -239,20 +270,45 @@
                                         />
                                         )
                                     })}
+                        <tr className="content__listroom-item">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td className="content__listroom-item-linepage">
+                                1-10 of 129
+                            </td>
+                            <td className="content__listroom-item-arrow">
+                                <i class="fas fa-angle-left content__listroom-item-arrow-item"></i>
+                                <i class="fas fa-angle-right content__listroom-item-arrow-item"></i>
+                                <button className="content__listroom-item-arrow-button" onClick={handleRenderDataDown}></button>
+                                <button className="content__listroom-item-arrow-button" onClick={handleRenderDataUp}></button>
+                            </td>
+                        </tr>
                     </React.Fragment>
                 )
             }
 
-			var courseAPI = 'http://localhost:3000/Room';
-			fetch(courseAPI)
-    			.then(res => res.json())
-    			.then(function(courses){
-                    // console.log(courses);
+            var courseAPI = 'http://localhost:3000/Room';
+            fetch(courseAPI)
+                .then(res => res.json())
+                .then(function(courses){
                     ReactDOM.render(<RenderContentListItemForm
                         APIcourse={courses}
                     />,document.querySelector('.content__listroom'));
-    			});
-		</script>
+                });
+
+            var contentListRoomItemArrow = document.getElementsByClassName('content__listroom-item-arrow');
+            var contentListRoomItemArrowItem = document.getElementsByClassName('content__listroom-item-arrow-item');
+            var contentListRoomItemArrowButton = document.getElementsByClassName('content__listroom-item-arrow-button');
+
+            setTimeout(() => {
+                    for(let i = 0; i < contentListRoomItemArrowItem.length; ++i){
+                    contentListRoomItemArrowItem[i].addEventListener('click', () => {
+                        contentListRoomItemArrowButton[i].click();
+                    });
+                }
+            },200);
+        </script>
 </body>
 <script
 	src="http://localhost:8080/appManageHotel-java-pj/Homejs"></script>

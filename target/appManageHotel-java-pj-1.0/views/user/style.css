@@ -365,7 +365,6 @@
 }
 .container .content__listroom {
   width: 80%;
-  height: 80%;
   background-color: #F4F7FC;
   border-radius: 5px;
   outline: 1px solid rgb(226, 226, 226);
@@ -373,6 +372,7 @@
   border-collapse: collapse;
   box-shadow: 0px 0px 3px 1px rgb(201, 201, 201);
   position: relative;
+  margin-top: 50px;
 }
 .container .content__listroom-button {
   font-weight: 600;
@@ -398,8 +398,7 @@
   background-color: rgb(196, 196, 250);
 }
 .container .content__listroom-button-img {
-  width: 15px;
-  height: 15px;
+  font-size: 15px;
 }
 .container .content__listroom-space {
   display: flex;
@@ -416,8 +415,7 @@
   left: 30px;
 }
 .container .content__listroom-search-img {
-  width: 30px;
-  height: 30px;
+  font-size: 25px;
 }
 .container .content__listroom-search-input {
   border: none;
@@ -440,13 +438,45 @@
   top: 0;
   bottom: 0;
   margin: auto 0px;
+  color: rgb(112, 112, 112);
 }
 .container .content__listroom-search-input-form {
   position: relative;
 }
+.container .content__listroom-item:last-child .content__listroom-item-arrow {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  padding: 8px;
+  color: rgb(112, 112, 112);
+}
+.container .content__listroom-item:nth-child(odd) {
+  background-color: #fff;
+}
+.container .content__listroom-item:hover {
+  background-color: rgb(241, 241, 241);
+}
+.container .content__listroom-item-linepage {
+  letter-spacing: 2px;
+  font-weight: 800;
+  font-size: 12px;
+  font-family: Lucida Sans Unicode;
+  color: #434141;
+}
+.container .content__listroom-item-arrow-item {
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+.container .content__listroom-item-arrow-item:hover {
+  color: #919090;
+  background-color: #e0e0e0;
+}
+.container .content__listroom-item-arrow-button {
+  display: none;
+}
 .container .content__listroom-item-icon {
-  width: 12px;
-  height: 12px;
+  font-size: 15px;
 }
 .container .content__listroom-item-id {
   width: 15%;
@@ -480,12 +510,19 @@
   padding: 0px 20px;
 }
 .container .content__listroom-item-img-item {
-  height: 15px;
-  width: 15px;
+  font-size: 15px;
+  color: rgb(112, 112, 112);
   margin: 0px 10px;
 }
 .container .content__listroom-item-img-item:hover {
   cursor: pointer;
+}
+.container .content__listroom-item-img-item:last-child {
+  border-radius: 100%;
+  padding: 5px;
+}
+.container .content__listroom-item-img-item:last-child:hover {
+  background-color: #fff;
 }
 .container .content__listroom-item-img .update {
   transition: 0.25s ease;
