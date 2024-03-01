@@ -153,15 +153,19 @@ var contentListRoomItemMoney = document.getElementsByClassName('content__listroo
 var contentListRoomItemCheck = document.getElementsByClassName('content__listroom-item-check');
 
 function setStyleListRoomItem(){
-    contentListRoomItem[0].style.backgroundColor = '#F4F7FC';
-    contentListRoomItem[contentListRoomItem.length-1].style.backgroundColor = "#fff";
+    setTimeout(() => {
+        contentListRoomItem[0].style.backgroundColor = '#F4F7FC';
+        contentListRoomItem[contentListRoomItem.length-1].style.backgroundColor = "#fff";
+    },100);
 }
 
 function setTitleListRoomItem(){
-    contentListRoomItemID[0].style = "font-weight: 600;font-size: 17px;font-family: sans-serif;color: gray;";
-    contentListRoomItemTypeRoom[0].style = "font-weight: 600;font-size: 17px;font-family: sans-serif;color: gray;";
-    contentListRoomItemMoney[0].style = "font-weight: 600;font-size: 17px;color: gray;font-family: sans-serif;";
-    contentListRoomItemCheck[0].style = "font-weight: 600;font-size: 17px;color: gray;font-family: sans-serif;";
+    setTimeout(() => {
+        contentListRoomItemID[0].style = "font-weight: 600;font-size: 17px;font-family: sans-serif;color: gray;";
+        contentListRoomItemTypeRoom[0].style = "font-weight: 600;font-size: 17px;font-family: sans-serif;color: gray;";
+        contentListRoomItemMoney[0].style = "font-weight: 600;font-size: 17px;color: gray;font-family: sans-serif;";
+        contentListRoomItemCheck[0].style = "font-weight: 600;font-size: 17px;color: gray;font-family: sans-serif;";
+    },100);
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -400,7 +404,6 @@ for(let i = 0; i < contentToolItem.length; ++i){
     });
 }
 
-var contentToolItem = document.getElementsByClassName('content__tool-item');
 var contentFormTool = document.querySelector('.content-form__tool');
 var contentFormToolItem = document.getElementsByClassName('content-form__tool-item');
 var contentFormToolItemTopic = document.getElementsByClassName('content-form__tool-item-topic');
@@ -443,7 +446,7 @@ setTimeout(()=>{
         funcResetValueContentFormTool();
         contentFormToolTitle.innerHTML = 'Insert room';
     });
-},100);
+},1000);
 
 function funcTurnOffContentFormTool(){
     contentFormTool.style.opacity = 0;
@@ -480,41 +483,41 @@ function funcResetValueContentFormTool(){
     }
 }
 
-contentFormToolSubmitConfirm.addEventListener('click',() => {
-    const arrText = new Object();
-    for(let i = 0; i < contentFormToolItem.length; ++i){
-        arrText[contentFormToolItemTopic[i].innerHTML] = contentFormToolItemText[i].value;
-    }
+// contentFormToolSubmitConfirm.addEventListener('click',() => {
+//     const arrText = new Object();
+//     for(let i = 0; i < contentFormToolItem.length; ++i){
+//         arrText[contentFormToolItemTopic[i].innerHTML] = contentFormToolItemText[i].value;
+//     }
 
-    const keys = Object.keys(arrText);
+//     const keys = Object.keys(arrText);
 
-    const divContentListRoomItem = document.createElement('div');
-    divContentListRoomItem.classList.add('content__listroom-item');
-    const divContentListRoomItemForm = document.createElement('div');
-    divContentListRoomItemForm.classList.add('content__listroom-item-form');
-    const divContentListRoomItemCheck = document.createElement('div');
-    divContentListRoomItemCheck.classList.add('content__listroom-item-check');
+//     const divContentListRoomItem = document.createElement('div');
+//     divContentListRoomItem.classList.add('content__listroom-item');
+//     const divContentListRoomItemForm = document.createElement('div');
+//     divContentListRoomItemForm.classList.add('content__listroom-item-form');
+//     const divContentListRoomItemCheck = document.createElement('div');
+//     divContentListRoomItemCheck.classList.add('content__listroom-item-check');
 
-    for(let i = 0; i < contentFormToolItem.length - 1; ++i){
-        divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
-                                                    <p class="content__listroom-item-form-item-topic">${keys[i]}:</p>
-                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[i]]}</p>
-                                                </div>`;
-    }
-    divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
-                                                    <p class="content__listroom-item-form-item-text">${arrText[keys[contentFormToolItem.length-1]]}</p>
-                                                </div>`
-    divContentListRoomItem.appendChild(divContentListRoomItemForm);
-    divContentListRoomItem.appendChild(divContentListRoomItemCheck);
-    contentListRoom.appendChild(divContentListRoomItem);
+//     for(let i = 0; i < contentFormToolItem.length - 1; ++i){
+//         divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
+//                                                     <p class="content__listroom-item-form-item-topic">${keys[i]}:</p>
+//                                                     <p class="content__listroom-item-form-item-text">${arrText[keys[i]]}</p>
+//                                                 </div>`;
+//     }
+//     divContentListRoomItemForm.innerHTML += `<div class="content__listroom-item-form-item">
+//                                                     <p class="content__listroom-item-form-item-text">${arrText[keys[contentFormToolItem.length-1]]}</p>
+//                                                 </div>`
+//     divContentListRoomItem.appendChild(divContentListRoomItemForm);
+//     divContentListRoomItem.appendChild(divContentListRoomItemCheck);
+//     contentListRoom.appendChild(divContentListRoomItem);
 
-    funcResetAttributecontentListRoomItem();
-    funcTurnOffContentFormTool();
-    funcResetValueContentFormTool();
-});
+//     funcResetAttributecontentListRoomItem();
+//     funcTurnOffContentFormTool();
+//     funcResetValueContentFormTool();
+// });
 
-// var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
-// var courseAPI = 'http://localhost:3000/Room';
+var courseAPI = 'http://localhost:8080/appManageHotel-java-pj/Home-data-room';
+var courseAPI = 'http://localhost:3000/Room';
 
 // fetch(courseAPI)
 //     .then(res => res.json())
@@ -564,34 +567,29 @@ function getDataListRoomItem(i){
 
 document.addEventListener('DOMContentLoaded',() => {
     setTimeout(() => {
+        var contentFormToolMethod = document.querySelector('.content-form__tool-method');
         var updateRoom = document.getElementsByClassName('update');
         var deleteRoom = document.getElementsByClassName('delete');
         var descRoom = document.getElementsByClassName('desc');
 
         for(let i = 0; i < updateRoom.length; ++i){
-            updateRoom[i].addEventListener('mouseover',()=>{
-                updateRoom[i].style.transform = "rotate(45deg)";
-            });
-            updateRoom[i].addEventListener('mouseleave',()=>{
-                updateRoom[i].style.transform = "rotate(0deg)";
-            });
             updateRoom[i].addEventListener('click',()=>{
+				console.log(2020)
                 funcTurnOnContentFormTool();
                 contentFormToolTitle.innerHTML = 'Update room';
                 getDataListRoomItem(i+1);
-            });
-            deleteRoom[i].addEventListener('mouseover',()=>{
-                deleteRoom[i].style.transform = "rotate(30deg)";
-            });
-            deleteRoom[i].addEventListener('mouseleave',()=>{
-                deleteRoom[i].style.transform = "rotate(0deg)";
+                contentFormToolMethod.value = "2";
+                console.log(contentFormToolMethod.value)
             });
             deleteRoom[i].addEventListener('click',()=>{
+				console.log(1010);
                 funcTurnOnContentFormTool();
                 contentFormToolTitle.innerHTML = 'Delete room';
                 getDataListRoomItem(i+1);
-                blockInput();
+                // blockInput();
+                contentFormToolMethod.value = "1";
+                console.log(contentFormToolMethod.value)
             });
         }
-    },100)
+    },500)
 });

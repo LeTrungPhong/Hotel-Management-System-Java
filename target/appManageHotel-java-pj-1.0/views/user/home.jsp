@@ -158,7 +158,7 @@
         --%>
 
 
-		<form class="content-form__tool" method="POST" action="">
+		<form class="content-form__tool" method="POST" action="/appManageHotel-java-pj/Home">
 			<h1 class="content-form__tool-title"></h1>
 			<div class="content-form__tool-item">
 				<div class="content-form__tool-item-topic">ID</div>
@@ -190,124 +190,210 @@
 	</article>
 	<footer class="footer"></footer>
 	<script type="text/babel">
+            const { useState } = React;
 
-            const {useState} = React;
-
-            function ContentListItemForm(course){
+            function ContentListItemForm(course) {
                 return (
                     <tr className="content__listroom-item">
-                        <td className="content__listroom-item-id">{course.id}</td>
-                        <td className="content__listroom-item-TypeRoom">{course.TypeRoom}</td>
-                        <td className={`content__listroom-item-Money ${course.Check?"color-green":"color-red"}`}>{course.Money}</td>
+                        <td className="content__listroom-item-id">
+                            {course.id}
+                        </td>
+                        <td className="content__listroom-item-TypeRoom">
+                            {course.TypeRoom}
+                        </td>
+                        <td
+                            className={`content__listroom-item-Money ${
+                                course.Check ? "color-green" : "color-red"
+                            }`}
+                        >
+                            {course.Money}
+                        </td>
                         <td className="content__listroom-item-check">
-                            {course.Check?<input type="checkbox" name="" id="" disabled checked/>:<input type="checkbox" name="" id="" disabled/>}
+                            {course.Check ? (
+                                <input
+                                    type="checkbox"
+                                    name=""
+                                    id=""
+                                    disabled
+                                    checked
+                                />
+                            ) : (
+                                <input type="checkbox" name="" id="" disabled />
+                            )}
                         </td>
                         <td className="content__listroom-item-img">
                             <i className="fas fa-edit content__listroom-item-img-item update"></i>
                             <i className="fa fa-trash content__listroom-item-img-item delete"></i>
-                            <i class="fas fa-ellipsis-h content__listroom-item-img-item desc"></i>
+                            <i className="fas fa-ellipsis-h content__listroom-item-img-item desc"></i>
                         </td>
                     </tr>
-                )
+                );
             }
 
-            function RenderContentListItemForm(courses){
-
-                const [count,setCount] = useState([0,courses.APIcourse.length>=10?10:courses.APIcourse.length]);
+            function RenderContentListItemForm(courses) {
+                const [count, setCount] = useState([
+                    0,
+                    courses.APIcourse.length >= 10
+                        ? 10
+                        : courses.APIcourse.length,
+                ]);
 
                 const handleRenderDataUp = () => {
-                    if(count[1] == courses.APIcourse.length){
+                    if (count[1] == courses.APIcourse.length) {
                         setCount((prev) => prev);
-                    }
-                    else if(count[1] + 10 > courses.APIcourse.length){
-                        setCount((prev) => [count[0] + 10, courses.APIcourse.length]);
+                    } else if (count[1] + 10 > courses.APIcourse.length) {
+                        setCount((prev) => [
+                            count[0] + 10,
+                            courses.APIcourse.length,
+                        ]);
                     } else {
                         setCount((prev) => [count[0] + 10, count[1] + 10]);
                     }
-                }
+                };
 
                 const handleRenderDataDown = () => {
-                    if(count[0] == 0){
-                        setCount((prev) => prev)
-                    } else if(count[1] == courses.APIcourse.length){
+                    if (count[0] == 0) {
+                        setCount((prev) => prev);
+                    } else if (count[1] == courses.APIcourse.length) {
                         setCount((prev) => [prev[0] - 10, prev[0]]);
                     } else {
                         setCount((prev) => [prev[0] - 10, prev[1] - 10]);
                     }
-                }
+                };
 
-                const getRenderData = courses.APIcourse.slice(count[0],count[1]);
-                console.log(getRenderData);
-                console.log(count[0]);
-                console.log(count[1]);
+                const getRenderData = courses.APIcourse.slice(
+                    count[0],
+                    count[1]
+                );
 
                 return (
                     <React.Fragment>
                         <div className="content__listroom-search">
                             <i className="fa fa-layer-group content__listroom-search-img"></i>
                             <div className="content__listroom-search-input-form">
-                                <input className="content__listroom-search-input" type="text" placeholder=" Search"/>
+                                <input
+                                    className="content__listroom-search-input"
+                                    type="text"
+                                    placeholder=" Search"
+                                />
                                 <i class="fas fa-search content__listroom-search-input-img"></i>
                             </div>
+                            <div className="select">
+                                <div className="select__title">TypeRoom <i class="fas fa-caret-down select__title-img"></i><i class="fas fa-caret-up select__title-img dp-n"></i></div>
+                                <div className="select__option dp-n">
+                                    <div className="select__option-item">Basic Room</div>
+                                    <div className="select__option-item">Normal Room</div>
+                                    <div className="select__option-item">Vip Room</div>
+                                </div>
+                            </div>
                         </div>
-                        <button className="content__listroom-button"><i className="fa fa-plus content__listroom-button-img"></i> Insert room</button>
-                        <tr className="content__listroom-space">
-                        </tr>
+                        <button className="content__listroom-button">
+                            <i className="fa fa-plus content__listroom-button-img"></i>{" "}
+                            Insert room
+                        </button>
+                        <tr className="content__listroom-space"></tr>
                         <tr className="content__listroom-item">
-                            <td className="content__listroom-item-id">ID <i class="fa fa-sort content__listroom-item-icon"></i></td>
-                            <td className="content__listroom-item-TypeRoom">TypeRoom <i class="fa fa-sort content__listroom-item-icon"></i></td>
-                            <td className="content__listroom-item-Money"><i class="fa fa-dollar-sign content__listroom-item-icon"></i> Money</td>
-                            <td className="content__listroom-item-check">Check <i class="fa fa-check content__listroom-item-icon"></i></td>
+                            <td className="content__listroom-item-id">
+                                ID{" "}
+                                <i class="fa fa-sort content__listroom-item-icon"></i>
+                            </td>
+                            <td className="content__listroom-item-TypeRoom">
+                                TypeRoom{" "}
+                                <i class="fa fa-sort content__listroom-item-icon"></i>
+                            </td>
+                            <td className="content__listroom-item-Money">
+                                <i class="fa fa-dollar-sign content__listroom-item-icon"></i>{" "}
+                                Money
+                            </td>
+                            <td className="content__listroom-item-check">
+                                Check{" "}
+                                <i class="fa fa-check content__listroom-item-icon"></i>
+                            </td>
                             <td className="content__listroom-item-img"></td>
                         </tr>
-                        {getRenderData.map(function(course){
-                                return (
-                                        <ContentListItemForm
-                                            id = {course.id}
-                                            TypeRoom = {course.TypeRoom}
-                                            Money = {course.Money}
-                                            Check = {course.Check}
-                                        />
-                                        )
-                                    })}
+                        {getRenderData.map(function (course) {
+                            return (
+                                <ContentListItemForm
+                                    id={course.id}
+                                    TypeRoom={course.TypeRoom}
+                                    Money={course.Money}
+                                    Check={course.Check}
+                                />
+                            );
+                        })}
                         <tr className="content__listroom-item">
                             <td></td>
                             <td></td>
                             <td></td>
                             <td className="content__listroom-item-linepage">
-                                1-10 of 129
+                                {`${count[0] + 1}-${count[1]} of ${courses.APIcourse.length}`}
                             </td>
                             <td className="content__listroom-item-arrow">
                                 <i class="fas fa-angle-left content__listroom-item-arrow-item"></i>
                                 <i class="fas fa-angle-right content__listroom-item-arrow-item"></i>
-                                <button className="content__listroom-item-arrow-button" onClick={handleRenderDataDown}></button>
-                                <button className="content__listroom-item-arrow-button" onClick={handleRenderDataUp}></button>
+                                <button
+                                    className="content__listroom-item-arrow-button"
+                                    onClick={handleRenderDataDown}
+                                ></button>
+                                <button
+                                    className="content__listroom-item-arrow-button"
+                                    onClick={handleRenderDataUp}
+                                ></button>
                             </td>
                         </tr>
                     </React.Fragment>
-                )
+                );
             }
 
-            var courseAPI = 'http://localhost:3000/Room';
+            var courseAPI = "http://localhost:8080/appManageHotel-java-pj/Home-data-room";
             fetch(courseAPI)
-                .then(res => res.json())
-                .then(function(courses){
-                    ReactDOM.render(<RenderContentListItemForm
-                        APIcourse={courses}
-                    />,document.querySelector('.content__listroom'));
+                .then((res) => res.json())
+                .then(function (courses) {
+                    ReactDOM.render(
+                        <RenderContentListItemForm APIcourse={courses} />,
+                        document.querySelector(".content__listroom")
+                    );
                 });
 
-            var contentListRoomItemArrow = document.getElementsByClassName('content__listroom-item-arrow');
-            var contentListRoomItemArrowItem = document.getElementsByClassName('content__listroom-item-arrow-item');
-            var contentListRoomItemArrowButton = document.getElementsByClassName('content__listroom-item-arrow-button');
+            var contentListRoomItemArrow = document.getElementsByClassName(
+                "content__listroom-item-arrow"
+            );
+            var contentListRoomItemArrowItem = document.getElementsByClassName(
+                "content__listroom-item-arrow-item"
+            );
+            var contentListRoomItemArrowButton =
+                document.getElementsByClassName(
+                    "content__listroom-item-arrow-button"
+                );
 
             setTimeout(() => {
-                    for(let i = 0; i < contentListRoomItemArrowItem.length; ++i){
-                    contentListRoomItemArrowItem[i].addEventListener('click', () => {
-                        contentListRoomItemArrowButton[i].click();
-                    });
+                for (let i = 0; i < contentListRoomItemArrowItem.length; ++i) {
+                    contentListRoomItemArrowItem[i].addEventListener(
+                        "click",
+                        () => {
+                            contentListRoomItemArrowButton[i].click();
+                        }
+                    );
                 }
-            },200);
+            }, 200);
+
+            setTimeout(() => {
+                    var select = document.querySelector('.select__title');
+                    var selectOption = document.querySelector('.select__option');
+                    var selectTitleImg = document.getElementsByClassName('select__title-img');
+
+                    select.addEventListener('click', () => {
+                        selectTitleImg[0].classList.toggle('dp-n');
+                        selectTitleImg[1].classList.toggle('dp-n');
+                        selectOption.classList.toggle('dp-n');
+                    });
+
+                    var contentFormToolMethod = document.querySelector('.content-form__tool-method');
+                    var contentListRoomButton = document.querySelector('.content__listroom-button');
+                    contentListRoomButton.addEventListener('click', () => {
+                    contentFormToolMethod.value = "0";
+                });
+            },100)
         </script>
 </body>
 <script
